@@ -1,0 +1,951 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>ResizeTool — Resize, Compress, Crop Images & Create PDFs Online</title>
+<meta name="description" content="ResizeTool offers free online tools to resize, compress, crop and convert JPG, PNG and WebP images, create PDFs and ID photos, compress PDFs, and convert common Office files in your browser.">
+<meta name="robots" content="index,follow">
+<link rel="sitemap" type="application/xml" href="/sitemap.xml">
+<meta name="theme-color" content="#6c5ce7">
+<meta property="og:url" content="https://resizetool.com/">
+<meta property="og:site_name" content="ResizeTool">
+<meta property="og:locale" content="en_IN">
+<meta name="twitter:title" content="ResizeTool — Free Image & PDF Tools">
+<meta name="twitter:description" content="Resize, compress, crop and convert images, create PDFs and ID photos online.">
+
+<meta name="author" content="Aditya G. Chudhari">
+<meta property="og:title" content="ResizeTool — Free Image & PDF Tools">
+<meta property="og:description" content="Resize, compress, crop and convert images, create ID photos and PDFs online.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="https://resizetool.com/">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cropperjs@1.6.2/dist/cropper.min.css">
+<style>
+:root{--bg:#f7f8fc;--card:#fff;--ink:#151923;--muted:#697386;--line:#e7e9ef;--brand:#6c5ce7;--brand2:#00a8ff;--soft:#f0edff;--pink:#e84393;--green:#00a884;--yellow:#f4b400}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial}
+.wrap{max-width:1050px;margin:auto;padding:0 18px}
+header{background:#fff;border-bottom:1px solid var(--line);padding:19px 0;position:sticky;top:0;z-index:5}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:15px}.logo{font-weight:900;font-size:21px;letter-spacing:-.5px}.logo i{color:#e53935;font-style:normal}.mini{font-size:12px;color:var(--muted)}
+.hero{text-align:center;padding:55px 0 28px}.eyebrow{display:inline-block;background:var(--soft);color:#c54d00;padding:7px 12px;border-radius:999px;font-size:12px;font-weight:800}.hero h1{font-size:clamp(34px,7vw,58px);line-height:1.02;margin:15px auto 12px;letter-spacing:-2.5px;max-width:760px}.hero p{color:var(--muted);max-width:600px;margin:auto;font-size:16px;line-height:1.6}
+.tools{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:22px 0 16px}.tool{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;text-align:left;cursor:pointer;color:var(--ink);transition:.15s}.tool:hover,.tool.active{border-color:#b9adff;box-shadow:0 9px 25px #1519230b;transform:translateY(-1px)}.tool b{display:block;font-size:14px}.tool small{display:block;color:var(--muted);margin-top:3px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:0 18px 55px #15192308}.drop{border:2px dashed #d9dce5;border-radius:16px;padding:38px 15px;text-align:center;background:#fcfcfe;cursor:pointer}.drop.drag{border-color:var(--brand);background:var(--soft)}.drop strong{font-size:17px}.drop p{margin:7px 0;color:var(--muted);font-size:13px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.hidden{display:none!important}.preview{width:100%;max-height:430px;object-fit:contain;background:#f0f2f6;border-radius:13px}.cropbox{max-height:500px;overflow:hidden}.card{border:1px solid var(--line);border-radius:13px;padding:12px;margin:12px 0}.hint,.status{font-size:13px;color:var(--muted)}input,select{font:inherit;border:1px solid var(--line);border-radius:9px;padding:9px;background:#fff}button{font:inherit;border:0;border-radius:10px;padding:10px 15px;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;font-weight:800;cursor:pointer}.secondary{background:#f0f1f5;color:var(--ink)}.checks{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:9px}.check{border:1px solid var(--line);padding:10px;border-radius:10px}.ad{margin:16px 0;border:1px dashed #d8dbe4;border-radius:11px;padding:10px;text-align:center;color:#969eac;font-size:12px}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin:18px 0}.feature{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px}.feature b{display:block;margin-bottom:5px}.feature span{font-size:13px;color:var(--muted)}
+footer{padding:30px 0 45px;color:var(--muted);font-size:12px;text-align:center}
+@media(max-width:760px){.tools{grid-template-columns:repeat(2,1fr)}.grid,.features{grid-template-columns:1fr}.hero{padding-top:40px}}
+
+.footer-inner{max-width:1050px;margin:auto;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;text-align:center}
+.copyright{display:inline-block;background:#dff5e8;color:#238653;border:1px solid #bfe7d0;border-radius:8px;padding:5px 9px;font-size:11px;font-weight:700}
+footer{background:linear-gradient(135deg,#161a2d,#25204d);color:#e8eaf2;padding:9px 12px 11px}
+.copyright strong{color:#238653}
+.legal-links{display:flex;gap:7px;flex-wrap:wrap;justify-content:center}
+.legal-links a{color:#fff;text-decoration:none;font-weight:800;font-size:12px;padding:7px 11px;border-radius:99px;background:#ffffff18;border:1px solid #ffffff20}
+.legal-links a:hover{background:#ffffff28}
+.legal-modal{display:none;position:fixed;inset:0;background:#101828aa;z-index:50;padding:18px;align-items:center;justify-content:center}
+.legal-box{position:relative;background:#fff;border-radius:20px;max-width:720px;width:100%;max-height:82vh;overflow:auto;padding:28px;box-shadow:0 25px 80px #0004}
+.legal-box h2{margin-top:0}.legal-box h3{margin-top:22px}.legal-box p,.legal-box li{color:#596579;line-height:1.7}
+.legal-close{position:absolute;right:15px;top:12px;background:#f0f1f5;color:#333;width:36px;height:36px;padding:0;border-radius:50%;font-size:22px}
+.tool:nth-child(1) .ico{color:#6c5ce7}.tool:nth-child(2) .ico{color:#e84393}.tool:nth-child(3) .ico{color:#00a884}.tool:nth-child(4) .ico{color:#00a8ff}.tool:nth-child(5) .ico{color:#f4b400}.tool:nth-child(6) .ico{color:#ff6b35}.tool:nth-child(7) .ico{color:#7957ff}.tool:nth-child(8) .ico{color:#18a558}
+
+.gallery{display:flex;gap:9px;flex-wrap:wrap;margin:12px 0}.thumb{width:92px;height:82px;padding:5px;background:#fff;border:1px solid var(--line);border-radius:10px;color:var(--muted);cursor:pointer;overflow:hidden}.thumb.active{border:2px solid var(--brand)}.thumb img{width:100%;height:52px;object-fit:cover;border-radius:6px;display:block}.thumb span{display:block;font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:4px}
+
+.footer-ad-wrap{background:#f5f7fb;padding:8px 12px 5px;text-align:center}
+.footer-ad{width:min(300px,88%);height:34px;margin:0 auto;border:1px dashed #aab2c0;border-radius:6px;display:flex;align-items:center;justify-content:center;color:#8b95a5;font-size:9px;letter-spacing:.4px;background:#fff}
+.footer-inner{max-width:1050px;margin:auto;text-align:center}
+.footer-legal{display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap}
+.copyright,.legal-chip{display:inline-flex;align-items:center;justify-content:center;height:28px;padding:0 9px;border-radius:7px;font-size:10px;font-weight:800;text-decoration:none}
+.copyright{background:#dff5e8;color:#238653;border:1px solid #bfe7d0}
+.copyright strong{color:#238653}
+.legal-chip{border:1px solid #ffffff20;color:#fff;background:#ffffff10}
+.disclaimer-chip{background:#fff3e8;color:#b85c00;border-color:#ffd6ad}
+.privacy-chip{background:#eaf4ff;color:#2866a8;border-color:#c7e0fa}
+.terms-chip{background:#f1edff;color:#624bb0;border-color:#d8ccff}
+</style>
+
+<style>
+.seo-content{font-size:12px;line-height:1.45}
+.seo-content h2{font-size:18px;margin:0 0 8px}
+.seo-content h3{font-size:14px;margin:14px 0 5px}
+.seo-content p{font-size:12px;line-height:1.5;margin:5px 0}
+.seo-content details{font-size:12px;margin:7px 0}
+.seo-content summary{font-size:12px;cursor:pointer}
+</style>
+
+<style>
+.upload-top{margin:0 0 16px}
+.upload-top .drop{margin:0}
+</style>
+
+<style>
+/* ResizeTool modern visual refresh */
+:root{
+  --bg:#f6f8fc;--card:#fff;--ink:#111827;--muted:#667085;--line:#e6eaf0;
+  --brand:#5b5ce2;--brand2:#7c3aed;--soft:#f0efff;--green:#0f9f72;
+}
+body{background:linear-gradient(180deg,#f8f9ff 0,#f6f8fc 45%,#fff 100%);color:var(--ink)}
+header{background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-bottom:1px solid #e9ebf2;padding:15px 0}
+.logo{font-size:23px;letter-spacing:-.8px}
+.logo i{color:#e53935}
+.mini{font-size:12px;color:#667085;font-weight:600}
+.hero{text-align:center;padding:48px 0 20px}
+.eyebrow{background:#eeefff;color:#5146c9;border:1px solid #dedcff;padding:8px 13px}
+.hero h1{font-size:clamp(36px,7vw,64px);letter-spacing:-3px;line-height:1;margin:16px auto 14px;max-width:820px}
+.hero p{font-size:17px;max-width:650px;line-height:1.6}
+.upload-top{max-width:900px;margin:0 auto 18px}
+.panel{border:1px solid #e4e7ee;border-radius:22px;box-shadow:0 18px 60px rgba(31,41,55,.08)}
+.upload-top .panel{padding:10px;background:rgba(255,255,255,.82)}
+.drop{border:2px dashed #cfd4e3;border-radius:18px;padding:42px 15px;background:linear-gradient(180deg,#fff,#fafaff);transition:.2s}
+.drop:hover,.drop.drag{border-color:var(--brand);background:#f5f4ff;transform:translateY(-1px)}
+.drop strong{font-size:19px}
+.drop p{font-size:13px}
+.tools{grid-template-columns:repeat(5,1fr);gap:11px;margin:20px 0}
+.tool{min-height:86px;border-radius:15px;padding:15px;background:#fff;border:1px solid #e5e8ef;box-shadow:0 5px 18px rgba(17,24,39,.035)}
+.tool:hover,.tool.active{border-color:#b9b4ff;box-shadow:0 10px 28px rgba(91,92,226,.13);transform:translateY(-2px)}
+.tool b{font-size:14px}
+.tool small{line-height:1.4}
+.ad{border-radius:12px;background:#f7f8fb;color:#9aa3b2;border-color:#e2e5eb}
+.seo-landing-links,.seo-content,.features{box-shadow:0 8px 30px rgba(17,24,39,.04)}
+.seo-landing-links h2,.seo-content h2{letter-spacing:-.3px}
+.seo-tool-link{background:#fff;border-color:#e1e5ed;transition:.15s}
+.seo-tool-link:hover{background:#f7f6ff;border-color:#b9b4ff;transform:translateY(-1px)}
+.feature{border-radius:16px;box-shadow:0 5px 20px rgba(17,24,39,.035)}
+footer{margin-top:8px}
+@media(max-width:900px){.tools{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){
+  .hero{padding:34px 0 16px}.hero h1{letter-spacing:-2px}.hero p{font-size:15px}
+  .tools{grid-template-columns:repeat(2,1fr);gap:9px}.tool{min-height:78px;padding:12px}
+  .drop{padding:34px 12px}.features{gap:9px}
+}
+</style>
+
+
+
+<style id="hide-empty-workspace-panel">
+.panel:has(> #workspace.hidden) { display:none; }
+</style>
+
+</head>
+<body>
+<header><div class="wrap nav"><div class="logo"><i>Resize</i>Tool</div><div class="mini">Simple • Fast • Easy</div></div></header>
+<main class="wrap">
+<section class="hero">
+
+<h1>Resize images. Make PDFs. Done.</h1>
+<p>A clean, premium and easy-to-use toolkit for everyday photo and document work.</p>
+
+</section>
+
+<div class="upload-top">
+<section class="panel">
+<div class="drop" id="drop"><input id="files" type="file" multiple accept="image/jpeg,image/png,image/webp,image/gif,image/bmp,application/pdf,.pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx" hidden>
+<div style="font-size:34px">↑</div><strong>Drop your files here</strong><p>or click to browse • Files stay in your browser when local processing is supported</p></div>
+</section>
+</div>
+
+<div class="tools">
+<button class="tool active" data-tool="resize"><b>↔ Resize</b><small>Set exact pixels</small></button>
+<button class="tool" data-tool="compress"><b>◉ Compress</b><small>Reduce file size</small></button>
+<button class="tool" data-tool="crop"><b>✂ Crop</b><small>Crop your photo</small></button>
+<button class="tool" data-tool="convert"><b>⇄ Convert</b><small>JPG · PNG · WebP</small></button>
+<button class="tool" data-tool="enhance"><b>✦ Enhance</b><small>Basic photo cleanup</small></button>
+<button class="tool" data-tool="id"><b>▣ ID Photo</b><small>Pixel-size presets</small></button>
+<button class="tool" data-tool="pdf"><b>▤ Image → PDF</b><small>Multiple images</small></button>
+<button class="tool" data-tool="office"><b>▥ Office → PDF</b><small>Word · PPT · Excel</small></button>
+<button class="tool" data-tool="pdfcompress"><b>⇩ Compress PDF</b><small>Reduce PDF file size</small></button>
+<button class="tool" data-tool="pdftoppt"><b>▣ PDF → PPT</b><small>Convert PDF to PowerPoint</small></button>
+<button class="tool" data-tool="wordtoppt"><b>▣ Word → PPT</b><small>Convert Word to PowerPoint</small></button>
+</div>
+
+<div class="ad">ADVERTISEMENT</div>
+<section class="panel">
+<div id="workspace" class="hidden">
+<div class="card row"><b id="info"></b><button class="secondary" id="clear">Clear</button></div>
+<div id="gallery" class="gallery"></div>
+
+<div id="resize">
+<h3>Resize Image</h3>
+<div class="row"><label>Width <input id="w" type="number" min="1"></label><label>Height <input id="h" type="number" min="1"></label></div>
+<div class="row"><label>Width % <input id="wp" type="number" min="1" max="500" value="100"></label><label>Height % <input id="hp" type="number" min="1" max="500" value="100"></label></div>
+<p><label><input id="ratio" type="checkbox" checked> Keep aspect ratio</label></p>
+<p class="hint">Enter pixels or percentage manually. 50% makes the image half its original size; 200% doubles it.</p>
+<div class="grid"><div><button id="resizeGo">Download JPG</button></div><img id="preview" class="preview"></div>
+</div>
+
+<div id="compress" class="hidden"><h3>Compress Image</h3>
+<p class="hint">Enter your target file size manually in KB, or use quality.</p>
+<div class="row">
+<label>Target size <input id="targetKB" type="number" min="1" step="1" placeholder="e.g. 100"> KB</label>
+<label>Quality <input id="quality" type="range" min=".1" max="1" step=".05" value=".7"></label>
+<span id="qv">70%</span>
+</div>
+<p class="hint">If Target size is entered, ResizeTool will try to make the JPEG file close to that size.</p>
+<p><button id="compressGo">Compress & Download</button></p></div>
+
+<div id="crop" class="hidden"><h3>Crop Image</h3>
+<div class="row"><select id="aspect"><option value="free">Free</option><option value="1">1 : 1</option><option value="1.333333">4 : 3</option><option value="1.5">3 : 2</option><option value=".75">3 : 4</option></select></div>
+<div class="row"><label>X % <input id="cx" type="number" min="0" max="100" value="10"></label><label>Y % <input id="cy" type="number" min="0" max="100" value="10"></label><label>Width % <input id="cw" type="number" min="1" max="100" value="80"></label><label>Height % <input id="ch" type="number" min="1" max="100" value="80"></label></div>
+<p class="hint">You can use the crop box or enter X, Y, Width and Height manually as percentages of the original photo.</p>
+<div class="row"><button id="cropApply">Apply manual crop</button><button id="cropGo">Download JPG</button></div><div class="cropbox"><img id="cropImage"></div></div>
+
+<div id="convert" class="hidden"><h3>Convert Image</h3><div class="row"><select id="format"><option value="image/jpeg">JPG</option><option value="image/png">PNG</option><option value="image/webp">WebP</option></select><button id="convertGo">Convert & Download</button></div></div>
+
+<div id="enhance" class="hidden"><h3>Enhance Photo</h3><div class="grid"><div><p>Brightness <input id="br" type="range" min="-100" max="100" value="0"></p><p>Contrast <input id="co" type="range" min="-100" max="100" value="0"></p><p>Saturation <input id="sa" type="range" min="-100" max="100" value="0"></p><button id="enhanceGo">Download Enhanced</button></div><canvas id="enhanceCanvas"></canvas></div></div>
+
+<div id="id" class="hidden"><h3>ID / Pixel Photo</h3><p class="hint">Generic pixel presets. Check the exact requirement of your application before submission.</p><div class="checks"><label class="check"><input type="radio" name="px" value="413x531" checked> 413 × 531</label><label class="check"><input type="radio" name="px" value="600x600"> 600 × 600</label><label class="check"><input type="radio" name="px" value="354x472"> 354 × 472</label><label class="check"><input type="radio" name="px" value="300x400"> 300 × 400</label></div><p><button id="idGo">Create ID Photo</button></p></div>
+
+<div id="pdf" class="hidden"><h3>Images → PDF</h3><div class="row"><select id="page"><option>A4</option><option>Letter</option></select><select id="orientation"><option value="portrait">Portrait</option><option value="landscape">Landscape</option></select><button id="pdfGo">Create PDF</button></div></div>
+
+<div id="office" class="hidden"><h3>Word / PowerPoint / Excel → PDF</h3>
+<p class="hint">Modern <b>.docx</b>, <b>.xlsx</b> and <b>.pptx</b> files are converted in your browser. No upload is required. Older .doc/.xls files need a server converter.</p>
+<input id="officeFiles" type="file" multiple accept=".doc,.docx,.ppt,.pptx,.xls,.xlsx">
+<p><button id="officeGo">Convert to PDF</button></p>
+<div id="officeStatus" class="status"></div></div>
+<div id="pdfcompress" class="hidden"><h3>Compress PDF</h3>
+<p class="hint">Compress one PDF directly in your browser. This works especially well for scanned/photo PDFs. Text/vector PDFs may have limited size reduction. The browser version rebuilds pages as images, so searchable text and some original PDF features may not be preserved.</p>
+<div class="row"><label>PDF file <input id="pdfCompressFile" type="file" accept="application/pdf"></label></div>
+<div class="row">
+<label>Reduce by <input id="pdfReduce" type="number" min="1" max="90" value="50"> %</label>
+<label>Target size <input id="pdfTargetKB" type="number" min="1" step="1" placeholder="Optional KB"> KB</label>
+</div>
+<p class="hint">Enter a percentage for automatic compression, or enter a target size in KB. If both are entered, the target KB is used.</p>
+<p><button id="pdfCompressGo">Compress & Download PDF</button></p>
+<div class="status" id="pdfCompressStatus"></div>
+</div>
+<div id="pdftoppt" class="hidden"><h3>PDF → PowerPoint</h3>
+<p class="hint">Convert each PDF page into a PowerPoint slide. The slide preserves the page appearance as an image, making this suitable for scanned documents and PDFs with mixed content. Each PDF page is placed on a PowerPoint slide as an image, so the slide appearance is preserved but the original PDF text is not converted into editable PowerPoint text.</p>
+<div class="row"><label>PDF file <input id="pdfToPptFile" type="file" accept="application/pdf"></label></div>
+<div class="row"><label>Image quality <select id="pptQuality"><option value="1.5">Standard</option><option value="2">High</option><option value="1">Smaller file</option></select></label>
+<button id="pdfToPptGo">Convert & Download PPT</button></div>
+<div class="status" id="pdfToPptStatus"></div>
+</div>
+<div id="wordtoppt" class="hidden"><h3>Word → PowerPoint</h3>
+<p class="hint">Convert a .docx Word document into a PowerPoint presentation. Headings become slide titles and paragraphs become slide content.</p>
+<div class="row"><label>Word file <input id="wordToPptFile" type="file" accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document"></label></div>
+<div class="row"><label>Presentation style <select id="wordPptStyle"><option value="standard">Standard</option><option value="compact">Compact</option></select></label>
+<button id="wordToPptGo">Convert & Download PPT</button></div>
+<div class="status" id="wordToPptStatus"></div>
+</div>
+<div class="status" id="status"></div>
+</div>
+</section>
+
+
+<section class="seo-landing-links" style="margin:22px 0;background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px">
+  <h2 style="font-size:18px;margin:0 0 10px">Popular ResizeTool Tools</h2>
+  <p style="font-size:13px;color:var(--muted);line-height:1.6">Use a dedicated tool for common image and PDF tasks.</p>
+  <div style="display:flex;gap:8px;flex-wrap:wrap">
+<a class="seo-tool-link" href="#resize" data-active-tool="resize">Resize Image Online</a>
+<a class="seo-tool-link" href="#compress" data-active-tool="compress">Compress Image Online</a>
+<a class="seo-tool-link" href="#compress" data-active-tool="compress" data-target-kb="20">Resize Image to 20KB Online | ResizeTool</a>
+<a class="seo-tool-link" href="#compress" data-active-tool="compress" data-target-kb="50">Resize Image to 50KB Online | ResizeTool</a>
+<a class="seo-tool-link" href="#compress" data-active-tool="compress" data-target-kb="100">Resize Image to 100KB Online | ResizeTool</a>
+<a class="seo-tool-link" href="#compress" data-active-tool="compress" data-target-kb="100">Compress Image to 100KB Online | ResizeTool</a>
+<a class="seo-tool-link" href="#pdf" data-active-tool="pdf">JPG to PDF Converter Online</a>
+<a class="seo-tool-link" href="#pdfcompress" data-active-tool="pdfcompress">Compress PDF Online</a>
+<a class="seo-tool-link" href="#pdftoppt" data-active-tool="pdftoppt">PDF to PowerPoint Converter Online | ResizeTool</a>
+<a class="seo-tool-link" href="#id" data-active-tool="id">ID Photo Resizer Online</a></div>
+</section>
+<section class="seo-content" style="margin:22px 0;background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px">
+  <h2>Free Online Image & PDF Tools</h2>
+  <p>ResizeTool helps you resize, compress, crop and convert images directly in your browser. You can also create ID-size photos and combine images into a PDF without installing desktop software.</p>
+  <div class="grid">
+    <div>
+      <h3>Resize and compress images</h3>
+      <p>Set exact width and height in pixels or resize by percentage. Compress JPEG images by quality or try to reach a target file size such as 100 KB.</p>
+    </div>
+    <div>
+      <h3>Convert and create PDFs</h3>
+      <p>Convert between JPG, PNG and WebP, create ID photos using pixel presets, and turn multiple images into an A4 or Letter PDF.</p>
+    </div>
+  </div>
+  <h3>Frequently Asked Questions</h3>
+  <details><summary><b>Are my images uploaded to a server?</b></summary><p>Browser-based image tools on this page process selected images locally in the browser.</p></details>
+  <details><summary><b>Can I resize an image to exact pixels?</b></summary><p>Yes. Enter the required width and height in pixels and use the Resize Image tool.</p></details>
+  <details><summary><b>Can I compress an image to a target KB size?</b></summary><p>Yes. Enter a target size in KB and ResizeTool will try to produce a JPEG close to that size.</p></details>
+  <details><summary><b>Can I make an image into a PDF?</b></summary><p>Yes. Select multiple images, choose A4 or Letter and choose portrait or landscape orientation.</p></details>
+</section>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebApplication",
+  "name":"ResizeTool",
+  "applicationCategory":"MultimediaApplication",
+  "operatingSystem":"Web Browser",
+  "description":"Free online tools for resizing, compressing, cropping and converting images, creating PDFs and ID photos.",
+  "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebSite",
+  "name":"ResizeTool",
+  "url":"https://resizetool.com/",
+  "description":"Free online image and PDF tools."
+}
+</script>
+
+
+
+<style>
+.seo-tool-link{display:inline-flex;align-items:center;padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);text-decoration:none;font-weight:700;font-size:12px}
+.seo-tool-link:hover{border-color:#b9adff;box-shadow:0 5px 15px #1519230b}
+</style>
+
+<section class="features">
+<div class="feature"><b>Private by design</b><span>Core file processing happens locally in your browser; files are not intentionally uploaded by this page.</span></div>
+<div class="feature"><b>Simple interface</b><span>No complicated settings or unnecessary steps.</span></div>
+<div class="feature"><b>Free to start</b><span>Ready for optional ads and premium features later.</span></div>
+</section>
+<div class="footer-ad-wrap"><div class="footer-ad">ADVERTISEMENT</div></div>
+<footer>
+<div class="footer-inner">
+  <div class="footer-legal">
+    <div class="copyright">© 2026 ResizeTool</div>
+    <a class="legal-chip disclaimer-chip" href="#disclaimer" onclick="openLegal('disclaimer');return false">Disclaimer</a>
+    <a class="legal-chip privacy-chip" href="#privacy" onclick="openLegal('privacy');return false">Privacy</a>
+    <a class="legal-chip terms-chip" href="#terms" onclick="openLegal('terms');return false">Terms</a><a class="legal-chip" href="mailto:adityachudhari1@gmail.com">Contact</a>
+  </div>
+</div>
+</footer>
+
+<div id="legalModal" class="legal-modal" onclick="if(event.target===this)closeLegal()">
+ <div class="legal-box">
+  <button class="legal-close" onclick="closeLegal()">×</button>
+  <div id="legalContent"></div>
+ </div>
+</div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/cropperjs@1.6.2/dist/cropper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.2/dist/jspdf.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mammoth@1.8.0/mammoth.browser.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"></script>
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+let files=[], activeIndex=0, img=null, cropper=null;
+const drop=$('#drop'), input=$('#files');
+
+drop.onclick=e=>{if(e.target!==input)input.click()};
+['dragenter','dragover'].forEach(x=>drop.addEventListener(x,e=>{e.preventDefault();drop.classList.add('drag')}));
+['dragleave','drop'].forEach(x=>drop.addEventListener(x,e=>{e.preventDefault();drop.classList.remove('drag')}));
+drop.addEventListener('drop',e=>load([...e.dataTransfer.files]));
+input.onchange=e=>load([...e.target.files]);
+
+function load(a){
+  const MAX_FILE_BYTES = 100 * 1024 * 1024;
+  const MAX_FILES = 20;
+  const incoming = Array.isArray(a) ? a.slice(0, MAX_FILES) : [];
+  const selected = incoming.filter(f => f && f.name && f.size <= MAX_FILE_BYTES);
+  const rejected = incoming.filter(f => f && f.name && f.size > MAX_FILE_BYTES);
+  if(rejected.length) $('#status').textContent = rejected.length + ' file(s) skipped because they exceed the 100 MB browser limit.';
+  const images = selected.filter(f => f.type && f.type.startsWith('image/'));
+  const pdfs = selected.filter(f => f.type === 'application/pdf' || /\.pdf$/i.test(f.name));
+  const office = selected.filter(f => /\.(doc|docx|ppt|pptx|xls|xlsx)$/i.test(f.name));
+
+  // Images continue to use the existing image workspace.
+  if(images.length){
+    files = images;
+    activeIndex = 0;
+    $('#workspace').classList.remove('hidden');
+    $('#info').textContent = images.length+' image(s) selected';
+    renderGallery();
+    selectImage(0);
+    activate('resize');
+    $('#status').textContent = office.length || pdfs.length
+      ? 'Image files loaded. PDF/Office files are handled by their dedicated tools.'
+      : '';
+  }
+
+  // A PDF dropped/selected in the main box is sent directly to Compress PDF.
+  if(pdfs.length){
+    const pdf = pdfs[0];
+    $('#pdfCompressFile').files = (() => {
+      const dt = new DataTransfer();
+      dt.items.add(pdf);
+      return dt.files;
+    })();
+    activate('pdfcompress');
+    $('#workspace').classList.remove('hidden');
+    $('#pdfCompressStatus').textContent =
+      pdfs.length > 1 ? pdf.name+' selected (one PDF at a time for compression).' : pdf.name+' selected.';
+  }
+
+  // Office files are sent to the Office → PDF picker. Supported modern formats
+  // are converted locally in the browser; older legacy formats are rejected.
+  if(office.length){
+    const dt = new DataTransfer();
+    office.forEach(f => dt.items.add(f));
+    $('#officeFiles').files = dt.files;
+    activate('office');
+    $('#workspace').classList.remove('hidden');
+    $('#officeStatus').textContent =
+      office.length+' Office file(s) selected. Tap "Convert to PDF".';
+  }
+
+  if(!selected.length){
+    $('#workspace').classList.add('hidden');
+    $('#info').textContent='No file selected.';
+  }
+
+  if(selected.length && !images.length && !pdfs.length && !office.length){
+    $('#workspace').classList.remove('hidden');
+    $('#info').textContent='Unsupported file. Use JPG, PNG, WebP, GIF, BMP, PDF, Word, PowerPoint or Excel.';
+  }
+}
+function renderGallery(){
+  const g=$('#gallery'); g.innerHTML='';
+  files.forEach((f,i)=>{
+    const item=document.createElement('button'); item.type='button'; item.className='thumb'+(i===activeIndex?' active':'');
+    const im=document.createElement('img'); im.alt=f.name; im.src=URL.createObjectURL(f);
+    const cap=document.createElement('span'); cap.textContent=(i+1)+'. '+f.name;
+    item.append(im,cap); item.onclick=()=>selectImage(i); g.appendChild(item);
+  });
+}
+async function selectImage(i){
+  activeIndex=i; renderGallery();
+  const f=files[i]; if(!f)return;
+  const r=new FileReader();
+  r.onload=()=>{
+    img=new Image();
+    img.onload=()=>{
+      $('#preview').src=r.result;
+      $('#w').value=img.naturalWidth; $('#h').value=img.naturalHeight;
+      $('#wp').value=100; $('#hp').value=100;
+      setupCrop(r.result); drawEnhance();
+      $('#status').textContent=f.name+' • '+img.naturalWidth+' × '+img.naturalHeight+' px';
+    };
+    img.onerror=()=>$('#status').textContent='This image format cannot be displayed by Chrome.';
+    img.src=r.result;
+  };
+  r.readAsDataURL(f);
+}
+function setupCrop(src){
+  if(cropper)cropper.destroy();
+  $('#cropImage').src=src;
+  cropper=new Cropper($('#cropImage'),{viewMode:1,autoCropArea:.8,responsive:true});
+}
+function activate(n){
+  $$('.tool').forEach(x=>x.classList.toggle('active',x.dataset.tool===n));
+  ['resize','compress','crop','convert','enhance','id','pdf','office','pdfcompress','pdftoppt','wordtoppt'].forEach(x=>$('#'+x).classList.toggle('hidden',x!==n));
+}
+$$('.tool').forEach(x=>x.onclick=()=>activate(x.dataset.tool));
+$$('.seo-tool-link[data-active-tool]').forEach(link=>{
+  link.onclick=e=>{
+    e.preventDefault();
+    const tool=link.dataset.activeTool;
+    activate(tool);
+    $('#workspace').classList.remove('hidden');
+    if(tool==='compress' && link.dataset.targetKb){
+      $('#targetKB').value=link.dataset.targetKb;
+      $('#quality').value='.7';
+      $('#qv').textContent='70%';
+    }
+    document.querySelector('.panel:last-of-type')?.scrollIntoView({behavior:'smooth',block:'start'});
+  };
+});
+
+$('#clear').onclick=()=>{
+  files=[];input.value='';$('#workspace').classList.add('hidden');
+  $('#gallery').innerHTML='';if(cropper)cropper.destroy();img=null;
+};
+$('#w').oninput=()=>{
+  if(!img)return;
+  $('#wp').value=Math.max(1,Math.round(+$('#w').value/img.naturalWidth*100));
+  if($('#ratio').checked){$('#h').value=Math.round(+$('#w').value*img.naturalHeight/img.naturalWidth);$('#hp').value=$('#wp').value}
+};
+$('#h').oninput=()=>{
+  if(!img)return;
+  $('#hp').value=Math.max(1,Math.round(+$('#h').value/img.naturalHeight*100));
+  if($('#ratio').checked){$('#w').value=Math.round(+$('#h').value*img.naturalWidth/img.naturalHeight);$('#wp').value=$('#hp').value}
+};
+$('#wp').oninput=()=>{
+  if(!img)return;
+  $('#w').value=Math.max(1,Math.round(img.naturalWidth*+$('#wp').value/100));
+  if($('#ratio').checked){$('#hp').value=$('#wp').value;$('#h').value=Math.max(1,Math.round(img.naturalHeight*+$('#hp').value/100))}
+};
+$('#hp').oninput=()=>{
+  if(!img)return;
+  $('#h').value=Math.max(1,Math.round(img.naturalHeight*+$('#hp').value/100));
+  if($('#ratio').checked){$('#wp').value=$('#hp').value;$('#w').value=Math.max(1,Math.round(img.naturalWidth*+$('#wp').value/100))}
+};
+
+function makeCanvas(w=img.naturalWidth,h=img.naturalHeight,filter='none'){
+  const c=document.createElement('canvas');c.width=Math.max(1,Math.round(w));c.height=Math.max(1,Math.round(h));
+  const x=c.getContext('2d');x.filter=filter;x.drawImage(img,0,0,c.width,c.height);x.filter='none';return c;
+}
+function blob(c,t='image/jpeg',q=.92){return new Promise(r=>c.toBlob(r,t,q))}
+function download(b,n){
+  if(!b)return;
+  const u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download=n;
+  document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),1500);
+}
+
+$('#resizeGo').onclick=async()=>{
+  if(!img)return alert('Select a photo first.');
+  const c=makeCanvas(+$('#w').value,+$('#h').value);download(await blob(c),'resized.jpg');
+};
+$('#quality').oninput=e=>$('#qv').textContent=Math.round(e.target.value*100)+'%';
+$('#compressGo').onclick=async()=>{
+  if(!img)return alert('Select a photo first.');
+  const targetKB=parseFloat($('#targetKB').value);
+  const c=makeCanvas();
+  if(!targetKB || targetKB<=0){
+    download(await blob(c,'image/jpeg',+$('#quality').value),'compressed.jpg');
+    return;
+  }
+  const target=targetKB*1024;
+  let lo=.01,hi=1,best=null;
+  // Find the highest quality that is at or below the requested target.
+  for(let i=0;i<12;i++){
+    const q=(lo+hi)/2, b=await blob(c,'image/jpeg',q);
+    if(b.size<=target){best=b;lo=q}else{hi=q}
+  }
+  if(!best){
+    // Even minimum JPEG quality is larger than target; return the smallest result.
+    best=await blob(c,'image/jpeg',.01);
+    $('#status').textContent='Minimum JPEG quality is still '+Math.ceil(best.size/1024)+' KB; target was '+targetKB+' KB.';
+  }else{
+    $('#status').textContent='Compressed to about '+Math.ceil(best.size/1024)+' KB (target '+targetKB+' KB).';
+  }
+  download(best,'compressed-'+targetKB+'KB.jpg');
+};
+$('#aspect').onchange=e=>cropper&&cropper.setAspectRatio(e.target.value==='free'?NaN:+e.target.value);
+$('#cropApply').onclick=()=>{
+  if(!cropper||!img)return;
+  const x=Math.max(0,Math.min(100,+$('#cx').value))/100,y=Math.max(0,Math.min(100,+$('#cy').value))/100;
+  const w=Math.max(.01,Math.min(100,+$('#cw').value))/100,h=Math.max(.01,Math.min(100,+$('#ch').value))/100;
+  const data=cropper.getData();
+  cropper.setData({x:x*img.naturalWidth,y:y*img.naturalHeight,width:w*img.naturalWidth,height:h*img.naturalHeight});
+  $('#status').textContent='Manual crop applied: '+$('#cx').value+'%, '+$('#cy').value+'%, '+$('#cw').value+'% × '+$('#ch').value+'%';
+};
+$('#cropGo').onclick=async()=>{if(!cropper)return alert('Select a photo first.');download(await blob(cropper.getCroppedCanvas(),'image/jpeg',.94),'cropped.jpg')};
+$('#convertGo').onclick=async()=>{
+  if(!img)return alert('Select a photo first.');
+  const t=$('#format').value, ext=t==='image/png'?'png':t==='image/webp'?'webp':'jpg';
+  download(await blob(makeCanvas(),t,.92),'converted.'+ext);
+};
+function drawEnhance(){
+  if(!img)return;let c=$('#enhanceCanvas');c.width=img.naturalWidth;c.height=img.naturalHeight;
+  let x=c.getContext('2d'),br=+$('#br').value,co=+$('#co').value,sa=+$('#sa').value;
+  x.filter=`brightness(${100+br}%) contrast(${100+co}%) saturate(${100+sa}%)`;x.drawImage(img,0,0);x.filter='none';
+}
+['br','co','sa'].forEach(x=>$('#'+x).oninput=drawEnhance);
+$('#enhanceGo').onclick=async()=>{if(img)download(await blob($('#enhanceCanvas')),'enhanced.jpg')};
+$('#idGo').onclick=async()=>{
+  if(!img)return alert('Select a photo first.');
+  let [w,h]=document.querySelector('input[name=px]:checked').value.split('x').map(Number);
+  download(await blob(makeCanvas(w,h)),'id-photo-'+w+'x'+h+'.jpg');
+};
+function read(f){return new Promise((r,j)=>{let x=new FileReader();x.onload=()=>r(x.result);x.onerror=j;x.readAsDataURL(f)})}
+function image(s){return new Promise((r,j)=>{let i=new Image();i.onload=()=>r(i);i.onerror=j;i.src=s})}
+$('#pdfGo').onclick=async()=>{
+  const a=files;if(!a.length)return alert('Select image files first.');
+  const {jsPDF}=window.jspdf,p=new jsPDF({format:$('#page').value,orientation:$('#orientation').value,unit:'mm'});
+  for(let n=0;n<a.length;n++){
+    if(n)p.addPage($('#page').value,$('#orientation').value);
+    const d=await read(a[n]),i=await image(d),pw=p.internal.pageSize.getWidth(),ph=p.internal.pageSize.getHeight(),m=8;
+    const s=Math.min((pw-2*m)/i.naturalWidth,(ph-2*m)/i.naturalHeight),w=i.naturalWidth*s,h=i.naturalHeight*s;
+    p.addImage(d,'JPEG',(pw-w)/2,(ph-h)/2,w,h);
+  }p.save('images.pdf');
+};
+async function docxToPdf(file, p){
+  const arrayBuffer=await file.arrayBuffer();
+  const result=await mammoth.convertToHtml({arrayBuffer});
+  const holder=document.createElement('div');
+  holder.innerHTML=result.value;
+  holder.style.cssText='position:fixed;left:-10000px;top:0;width:720px;background:#fff;color:#111;padding:20px;font:12px Arial;line-height:1.5';
+  document.body.appendChild(holder);
+  const lines=[];
+  holder.querySelectorAll('h1,h2,h3,h4,h5,h6,p,li,td,th').forEach(el=>{
+    const t=(el.innerText||'').trim();
+    if(t) lines.push({text:t,bold:/^h[1-6]$|^th$/i.test(el.tagName),size:/^h1$/i.test(el.tagName)?18:/^h2$/i.test(el.tagName)?15:/^h[3-6]$/i.test(el.tagName)?13:11});
+  });
+  const pageW=p.internal.pageSize.getWidth(), pageH=p.internal.pageSize.getHeight(), margin=36;
+  let y=margin;
+  for(const item of lines){
+    const chunks=p.splitTextToSize(item.text,pageW-margin*2);
+    p.setFont('helvetica',item.bold?'bold':'normal'); p.setFontSize(item.size);
+    for(const line of chunks){
+      if(y>pageH-margin){p.addPage();y=margin}
+      p.text(line,margin,y);y+=item.size+5;
+    }
+    y+=3;
+  }
+  document.body.removeChild(holder);
+}
+
+async function xlsxToPdf(file,p){
+  const data=await file.arrayBuffer();
+  const wb=XLSX.read(data,{type:'array'});
+  const pageW=p.internal.pageSize.getWidth(), pageH=p.internal.pageSize.getHeight(), margin=24;
+  for(let si=0;si<wb.SheetNames.length;si++){
+    if(si)p.addPage();
+    const ws=wb.Sheets[wb.SheetNames[si]];
+    const rows=XLSX.utils.sheet_to_json(ws,{header:1,defval:''});
+    const maxCols=Math.min(10,Math.max(1,...rows.map(r=>r.length)));
+    const usableW=pageW-margin*2, colW=usableW/maxCols, rowH=18;
+    let y=margin+12;
+    p.setFont('helvetica','bold');p.setFontSize(13);p.text(wb.SheetNames[si],margin,y);y+=20;
+    p.setFontSize(7);
+    for(const row of rows){
+      if(y>pageH-margin){p.addPage();y=margin}
+      for(let c=0;c<maxCols;c++){
+        const text=String(row[c]??'').replace(/\s+/g,' ').slice(0,55);
+        p.rect(margin+c*colW,y-rowH+3,colW,rowH);
+        p.text(p.splitTextToSize(text,colW-4)[0]||'',margin+c*colW+2,y-3);
+      }
+      y+=rowH;
+    }
+  }
+}
+
+async function pptxToPdf(file,p){
+  const zip=await JSZip.loadAsync(await file.arrayBuffer());
+  const slideFiles=Object.keys(zip.files).filter(x=>/^ppt\/slides\/slide\d+\.xml$/i.test(x))
+    .sort((a,b)=>parseInt(a.match(/\d+/)[0])-parseInt(b.match(/\d+/)[0]));
+  const pageW=p.internal.pageSize.getWidth(),pageH=p.internal.pageSize.getHeight(),margin=40;
+  for(let s=0;s<slideFiles.length;s++){
+    if(s)p.addPage('a4','landscape');
+    const xml=await zip.files[slideFiles[s]].async('text');
+    const doc=new DOMParser().parseFromString(xml,'application/xml');
+    const texts=[...doc.getElementsByTagNameNS('*','t')].map(x=>x.textContent.trim()).filter(Boolean);
+    let y=margin;
+    p.setFont('helvetica','normal');p.setFontSize(16);
+    for(const t of texts){
+      const lines=p.splitTextToSize(t,pageW-margin*2);
+      for(const line of lines){
+        if(y>pageH-margin){p.addPage('a4','landscape');y=margin}
+        p.text(line,margin,y);y+=22;
+      }
+      y+=10;
+    }
+    if(!texts.length){p.setFontSize(12);p.text('This slide contains content that could not be converted to text.',margin,y)}
+  }
+}
+
+$('#officeGo').onclick=async()=>{
+  const a=[...$('#officeFiles').files];
+  if(!a.length)return alert('Choose Word, PowerPoint or Excel files');
+  $('#officeGo').disabled=true;
+  try{
+    const {jsPDF}=window.jspdf;
+    let p=null;
+    for(let n=0;n<a.length;n++){
+      const f=a[n], ext=f.name.split('.').pop().toLowerCase();
+      $('#officeStatus').textContent=`Converting ${n+1} of ${a.length}: ${f.name}…`;
+      if(!p)p=new jsPDF({unit:'pt',format:'a4'});
+      else p.addPage('a4','portrait');
+      if(ext==='docx') await docxToPdf(f,p);
+      else if(ext==='xlsx') await xlsxToPdf(f,p);
+      else if(ext==='pptx') await pptxToPdf(f,p);
+      else throw new Error('This browser version supports .docx, .xlsx and .pptx. Older Office formats need server conversion.');
+    }
+    const blob=p.output('blob');
+    download(blob,'converted-office-files.pdf');
+    $('#officeStatus').textContent='PDF ready — converted in your browser.';
+  }catch(e){
+    console.error(e);
+    $('#officeStatus').textContent=e.message||'Conversion failed.';
+  }finally{$('#officeGo').disabled=false}
+};
+</script>
+
+<script type="module">
+import * as pdfjsLib from "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.min.mjs";
+
+const pdfInput = document.getElementById('pdfCompressFile');
+const reduceInput = document.getElementById('pdfReduce');
+const targetInput = document.getElementById('pdfTargetKB');
+const compressBtn = document.getElementById('pdfCompressGo');
+const compressStatus = document.getElementById('pdfCompressStatus');
+
+async function buildPdfFromImages(pdfBytes, scale, quality) {
+  const pdf = await pdfjsLib.getDocument({data: pdfBytes}).promise;
+  const {jsPDF} = window.jspdf;
+  let output = null;
+
+  for (let n = 1; n <= pdf.numPages; n++) {
+    compressStatus.textContent = `Compressing page ${n} of ${pdf.numPages}…`;
+    const page = await pdf.getPage(n);
+    const base = page.getViewport({scale:1});
+    const view = page.getViewport({scale:scale});
+
+    const canvas = document.createElement('canvas');
+    canvas.width = Math.max(1, Math.ceil(view.width));
+    canvas.height = Math.max(1, Math.ceil(view.height));
+    const ctx = canvas.getContext('2d', {alpha:false});
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    await page.render({canvasContext:ctx, viewport:view}).promise;
+
+    const jpg = canvas.toDataURL('image/jpeg', quality);
+    const orientation = base.width > base.height ? 'landscape' : 'portrait';
+
+    if (!output) {
+      output = new jsPDF({
+        unit:'pt',
+        format:[base.width, base.height],
+        orientation,
+        compress:true
+      });
+    } else {
+      output.addPage([base.width, base.height], orientation);
+    }
+    output.addImage(jpg, 'JPEG', 0, 0, base.width, base.height, undefined, 'FAST');
+  }
+
+  return output.output('blob');
+}
+
+compressBtn.onclick = async () => {
+  const file = pdfInput.files[0];
+  if (!file) { alert('Choose a PDF first.'); return; }
+
+  const reduce = Math.max(1, Math.min(90, Number(reduceInput.value) || 50));
+  const targetKB = Number(targetInput.value);
+  const originalSize = file.size;
+
+  compressBtn.disabled = true;
+  try {
+    const bytes = new Uint8Array(await file.arrayBuffer());
+
+    // If target KB is provided, try several quality/scale combinations and
+    // choose the smallest result that is closest to the requested target.
+    const candidates = [
+      {scale: Math.max(.45, 1-reduce/100), quality: Math.max(.45, .85-reduce/250)},
+      {scale: .70, quality:.65},
+      {scale: .60, quality:.58},
+      {scale: .50, quality:.52},
+      {scale: .45, quality:.45}
+    ];
+
+    let best = null;
+    let bestScore = Infinity;
+
+    for (const c of candidates) {
+      const b = await buildPdfFromImages(bytes, c.scale, c.quality);
+      const score = targetKB > 0
+        ? Math.abs(b.size - targetKB*1024)
+        : b.size;
+      if (!best || score < bestScore) {
+        best = b;
+        bestScore = score;
+      }
+      if (targetKB > 0 && b.size <= targetKB*1024) {
+        // Prefer a result at or below the requested target.
+        if (!best || best.size > targetKB*1024 || b.size > best.size) best = b;
+      }
+    }
+
+    const saved = Math.max(0, (1 - best.size/originalSize) * 100);
+    const before = Math.round(originalSize/1024);
+    const after = Math.round(best.size/1024);
+    const name = file.name.replace(/\.pdf$/i,'') + '-compressed.pdf';
+
+    download(best, name);
+    compressStatus.textContent =
+      `Done: ${before} KB → ${after} KB (${Math.round(saved)}% smaller).`;
+  } catch (err) {
+    console.error(err);
+    compressStatus.textContent =
+      'Compression failed. Try a smaller PDF or a different browser.';
+  } finally {
+    compressBtn.disabled = false;
+  }
+};
+</script>
+
+<script>
+/* Word → PowerPoint: browser-based .docx conversion */
+const wordToPptFile = document.getElementById('wordToPptFile');
+const wordToPptGo = document.getElementById('wordToPptGo');
+const wordToPptStatus = document.getElementById('wordToPptStatus');
+
+wordToPptGo.onclick = async () => {
+  const file = wordToPptFile.files[0];
+  if (!file) { alert('Choose a Word .docx file first.'); return; }
+
+  wordToPptGo.disabled = true;
+  wordToPptStatus.textContent = 'Reading Word document…';
+
+  try {
+    const arrayBuffer = await file.arrayBuffer();
+    const result = await mammoth.convertToHtml({arrayBuffer});
+    // Parse converter output in an isolated document, not the live page DOM.
+    // We only read text from the resulting elements; no document-provided HTML is executed.
+    const parsed = new DOMParser().parseFromString(result.value, 'text/html');
+
+    const slides = [];
+    let current = {title:'', items:[]};
+
+    parsed.body.querySelectorAll('h1,h2,h3,h4,h5,h6,p,li').forEach(el => {
+      const t = (el.innerText || '').trim();
+      if (!t) return;
+
+      if (/^h[1-6]$/i.test(el.tagName)) {
+        if (current.title || current.items.length) slides.push(current);
+        current = {title:t, items:[]};
+      } else {
+        current.items.push(t);
+      }
+    });
+    if (current.title || current.items.length) slides.push(current);
+
+    if (!slides.length) throw new Error('No readable text was found in this Word document.');
+
+    const pptx = new PptxGenJS();
+    pptx.layout = 'LAYOUT_WIDE';
+    pptx.author = 'ResizeTool';
+    pptx.company = 'ResizeTool';
+    pptx.subject = 'Word converted to PowerPoint';
+    pptx.lang = 'en-US';
+
+    const compact = document.getElementById('wordPptStyle').value === 'compact';
+
+    slides.forEach((data, index) => {
+      const slide = pptx.addSlide();
+      slide.background = {color:'FFFFFF'};
+
+      const title = data.title || `Slide ${index + 1}`;
+      slide.addText(title, {
+        x:0.65,y:0.45,w:12.0,h:0.65,
+        fontFace:'Arial',fontSize:compact ? 25 : 29,
+        bold:true,color:'202124',margin:0
+      });
+
+      const body = data.items.slice(0, compact ? 9 : 7)
+        .map(x => `• ${x}`).join('\n');
+
+      if (body) {
+        slide.addText(body, {
+          x:0.8,y:1.35,w:11.7,h:5.35,
+          fontFace:'Arial',fontSize:compact ? 17 : 20,
+          color:'3F4652',breakLine:false,
+          valign:'top',margin:0.04,
+          paraSpaceAfterPt:10,
+          fit:'shrink'
+        });
+      }
+    });
+
+    const outputName = file.name.replace(/\.docx$/i,'') + '-converted.pptx';
+    await pptx.writeFile({fileName:outputName});
+    wordToPptStatus.textContent = `Done — ${slides.length} slide(s) created.`;
+  } catch (err) {
+    console.error(err);
+    wordToPptStatus.textContent = err.message || 'Word → PPT conversion failed.';
+  } finally {
+    wordToPptGo.disabled = false;
+  }
+};
+</script>
+
+<script type="module">
+import * as pdfjsLibPpt from "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.min.mjs";
+
+const pdfToPptFile = document.getElementById('pdfToPptFile');
+const pdfToPptGo = document.getElementById('pdfToPptGo');
+const pdfToPptStatus = document.getElementById('pdfToPptStatus');
+
+pdfToPptGo.onclick = async () => {
+  const file = pdfToPptFile.files[0];
+  if (!file) { alert('Choose a PDF first.'); return; }
+
+  pdfToPptGo.disabled = true;
+  try {
+    const bytes = new Uint8Array(await file.arrayBuffer());
+    const pdf = await pdfjsLibPpt.getDocument({data: bytes}).promise;
+    const pptx = new PptxGenJS();
+    pptx.layout = 'LAYOUT_WIDE';
+    pptx.author = 'ResizeTool';
+    pptx.subject = 'PDF converted to PowerPoint';
+    pptx.title = file.name.replace(/\.pdf$/i,'');
+    pptx.company = 'ResizeTool';
+    pptx.lang = 'en-US';
+    pptx.theme = {
+      headFontFace: 'Arial',
+      bodyFontFace: 'Arial',
+      lang: 'en-US'
+    };
+
+    const quality = Number(document.getElementById('pptQuality').value || 1.5);
+
+    for (let n = 1; n <= pdf.numPages; n++) {
+      pdfToPptStatus.textContent = `Converting page ${n} of ${pdf.numPages}…`;
+      const page = await pdf.getPage(n);
+
+      // Render page at a controlled resolution.
+      const base = page.getViewport({scale:1});
+      const maxPixels = 2200000;
+      let scale = quality;
+      const estimated = base.width * base.height * scale * scale;
+      if (estimated > maxPixels) scale = Math.sqrt(maxPixels/(base.width*base.height));
+      scale = Math.max(.5, scale);
+
+      const view = page.getViewport({scale});
+      const canvas = document.createElement('canvas');
+      canvas.width = Math.ceil(view.width);
+      canvas.height = Math.ceil(view.height);
+
+      const ctx = canvas.getContext('2d', {alpha:false});
+      ctx.fillStyle = '#fff';
+      ctx.fillRect(0,0,canvas.width,canvas.height);
+      await page.render({canvasContext:ctx, viewport:view}).promise;
+
+      const img = canvas.toDataURL('image/jpeg', quality >= 2 ? .88 : quality >= 1.5 ? .82 : .72);
+
+      // Standard 16:9 PowerPoint slide. Fit the complete PDF page without cropping.
+      const slide = pptx.addSlide();
+      slide.background = {color:'FFFFFF'};
+      const sw = 13.333, sh = 7.5;
+      const pageRatio = base.width / base.height;
+      let w = sw, h = w / pageRatio;
+      if (h > sh) { h = sh; w = h * pageRatio; }
+      slide.addImage({data:img, x:(sw-w)/2, y:(sh-h)/2, w, h});
+    }
+
+    const outputName = file.name.replace(/\.pdf$/i,'') + '-converted.pptx';
+    await pptx.writeFile({fileName: outputName});
+    pdfToPptStatus.textContent = `Done — ${pdf.numPages} page(s) converted to PowerPoint.`;
+  } catch (err) {
+    console.error(err);
+    pdfToPptStatus.textContent =
+      'PDF → PPT conversion failed. Try a smaller PDF or another browser.';
+  } finally {
+    pdfToPptGo.disabled = false;
+  }
+};
+</script>
+
+<script>
+const legalText={
+privacy:`<h2>Privacy Policy</h2>
+<p><b>Last updated: 2026</b></p>
+<p>ResizeTool is designed with local-first processing. For the browser-based tools on this page, selected files are processed on your device and the page code does not intentionally upload those files to a ResizeTool server.</p>
+<h3>Files and processing</h3><p>When a tool operates in your browser, your selected file is handled locally by the browser. The page loads processing libraries from public CDNs, so your browser makes normal network requests for those libraries; the selected file is not included in those library requests by the tool code. Any future server-based feature that requires file transmission should clearly explain this before use.</p>
+<h3>Information we may receive</h3><p>The standalone core tools do not require an account. Depending on services enabled on the live website, normal hosting logs, security information, analytics, advertising technologies or contact messages may be processed. This policy should be kept updated whenever such services are added.</p>
+<h3>Cookies and advertising</h3><p>If advertising or analytics services are enabled, those services may use cookies or similar technologies according to their own policies. ResizeTool will not claim that such services are absent when they are enabled.</p>
+<h3>Contact</h3><p>For questions about this website, contact <a href="mailto:adityachudhari1@gmail.com">adityachudhari1@gmail.com</a>.</p>
+<h3>Security</h3><p>No software can guarantee absolute security. ResizeTool uses browser-side processing for its core file tools and applies a 100 MB per-file browser limit to reduce resource-exhaustion risk. Keep your browser and device updated. Third-party libraries are loaded from their published CDN locations.</p>`,
+terms:`<h2>Terms of Use</h2>
+<p><b>Last updated: 2026</b></p>
+<p>Use ResizeTool only for lawful purposes and only with files you have permission to process.</p>
+<h3>Your responsibility</h3><p>You are responsible for checking generated files before using them for government, employment, education, commercial, legal or other official purposes.</p>
+<h3>Availability</h3><p>Features and availability may change. Output quality can vary by browser, file format and source file.</p>
+<h3>Rights</h3><p>Do not use ResizeTool to infringe copyright, privacy, intellectual-property rights or other legal rights.</p>`,
+disclaimer:`<h2>Disclaimer</h2>
+<p><b>Last updated: 2026</b></p>
+<p>ResizeTool is a general-purpose file utility and does not provide legal, medical, financial, immigration or other professional advice.</p>
+<h3>Official requirements</h3><p>Photo and document requirements vary by organization and may change. Always verify the current requirements of the authority receiving your file.</p>
+<h3>Output</h3><p>Check dimensions, quality, formatting and PDF output before submitting or publishing a file.</p>
+<p>This disclaimer is a general website template and is not a substitute for legal advice.</p>`
+};
+function openLegal(type){document.getElementById('legalContent').innerHTML=legalText[type];document.getElementById('legalModal').style.display='flex'}
+function closeLegal(){document.getElementById('legalModal').style.display='none'}
+</script>
+
+</body></html>
