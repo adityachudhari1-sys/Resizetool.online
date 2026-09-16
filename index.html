@@ -108,8 +108,8 @@ header{background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-bottom
 .ad{border-radius:12px;background:#f7f8fb;color:#9aa3b2;border-color:#e2e5eb}
 .seo-landing-links,.seo-content,.features{box-shadow:0 8px 30px rgba(17,24,39,.04)}
 .seo-landing-links h2,.seo-content h2{letter-spacing:-.3px}
-.seo-tool-link{background:#fff;border-color:#e1e5ed;transition:.15s}
-.seo-tool-link:hover{background:#f7f6ff;border-color:#b9b4ff;transform:translateY(-1px)}
+.seo-tool-link{background:transparent;border-color:transparent;transition:.15s}
+.seo-tool-link:hover{background:#f1f3f4;border-color:transparent;transform:none}
 .feature{border-radius:16px;box-shadow:0 5px 20px rgba(17,24,39,.035)}
 footer{margin-top:8px}
 @media(max-width:900px){.tools{grid-template-columns:repeat(3,1fr)}}
@@ -128,6 +128,30 @@ footer{margin-top:8px}
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5389787720837787"
      crossorigin="anonymous"></script>
+
+<style id="popular-tools-final-style">
+.seo-tool-link{
+  color:#1a0dab !important;
+  background:transparent !important;
+  border:0 !important;
+  text-decoration:none !important;
+  font-weight:500;
+  font-size:13px;
+  padding:5px 7px;
+  border-radius:3px;
+  transition:background .15s,color .15s;
+}
+.seo-tool-link:hover,
+.seo-tool-link:focus{
+  color:#174ea6 !important;
+  background:#f1f3f4 !important;
+  border:0 !important;
+  box-shadow:none !important;
+  transform:none !important;
+  text-decoration:none !important;
+}
+</style>
+
 </head>
 <body>
 <header><div class="wrap nav"><div class="logo"><i>Resize</i>Tool</div><div class="mini">Simple • Fast • Easy</div></div></header>
@@ -146,24 +170,9 @@ footer{margin-top:8px}
 </section>
 </div>
 
-<div class="tools">
-<button class="tool active" data-tool="resize"><b>↔ Resize</b><small>Set exact pixels</small></button>
-<button class="tool" data-tool="compress"><b>◉ Compress</b><small>Reduce file size</small></button>
-<button class="tool" data-tool="crop"><b>✂ Crop</b><small>Crop your photo</small></button>
-<button class="tool" data-tool="convert"><b>⇄ Convert</b><small>JPG · PNG · WebP</small></button>
-<button class="tool" data-tool="enhance"><b>✦ Enhance</b><small>Basic photo cleanup</small></button>
-<button class="tool" data-tool="id"><b>▣ ID Photo</b><small>Pixel-size presets</small></button>
-<button class="tool" data-tool="pdf"><b>▤ Image → PDF</b><small>Multiple images</small></button>
-<button class="tool" data-tool="office"><b>▥ Office → PDF</b><small>Word · PPT · Excel</small></button>
-<button class="tool" data-tool="pdfcompress"><b>⇩ Compress PDF</b><small>Reduce PDF file size</small></button>
-<button class="tool" data-tool="pdftoppt"><b>▣ PDF → PPT</b><small>Convert PDF to PowerPoint</small></button>
-<button class="tool" data-tool="wordtoppt"><b>▣ Word → PPT</b><small>Convert Word to PowerPoint</small></button>
-</div>
-
-<div class="ad">ADVERTISEMENT</div>
 <section class="panel">
 <div id="workspace" class="hidden">
-<div class="card row"><b id="info"></b><button class="secondary" id="clear">Clear</button></div>
+<div class="card row"><b id="info"></b><span class="hint">Selected files stay available until you tap Clear.</span><button class="secondary" id="clear">Clear</button></div>
 <div id="gallery" class="gallery"></div>
 
 <div id="resize">
@@ -234,21 +243,44 @@ footer{margin-top:8px}
 </section>
 
 
+
+
+
+<div class="tools">
+<button class="tool active" data-tool="resize"><b>↔ Resize</b><small>Set exact pixels</small></button>
+<button class="tool" data-tool="compress"><b>◉ Compress</b><small>Reduce file size</small></button>
+<button class="tool" data-tool="crop"><b>✂ Crop</b><small>Crop your photo</small></button>
+<button class="tool" data-tool="convert"><b>⇄ Convert</b><small>JPG · PNG · WebP</small></button>
+<button class="tool" data-tool="enhance"><b>✦ Enhance</b><small>Basic photo cleanup</small></button>
+<button class="tool" data-tool="id"><b>▣ ID Photo</b><small>Pixel-size presets</small></button>
+<button class="tool" data-tool="pdf"><b>▤ Image → PDF</b><small>Multiple images</small></button>
+<button class="tool" data-tool="office"><b>▥ Office → PDF</b><small>Word · PPT · Excel</small></button>
+<button class="tool" data-tool="pdfcompress"><b>⇩ Compress PDF</b><small>Reduce PDF file size</small></button>
+<button class="tool" data-tool="pdftoppt"><b>▣ PDF → PPT</b><small>Convert PDF to PowerPoint</small></button>
+<button class="tool" data-tool="wordtoppt"><b>▣ Word → PPT</b><small>Convert Word to PowerPoint</small></button>
+</div>
+
+<div class="ad">ADVERTISEMENT</div>
+
 <section class="seo-landing-links" style="margin:22px 0;background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px">
   <h2 style="font-size:18px;margin:0 0 10px">Popular ResizeTool Tools</h2>
   <p style="font-size:13px;color:var(--muted);line-height:1.6">Use a dedicated tool for common image and PDF tasks.</p>
-  <div style="display:flex;gap:8px;flex-wrap:wrap">
-<a class="seo-tool-link" href="#resize" data-active-tool="resize">Resize Image Online</a>
-<a class="seo-tool-link" href="#compress" data-active-tool="compress">Compress Image Online</a>
-<a class="seo-tool-link" href="#compress" data-active-tool="compress" data-target-kb="20">Resize Image to 20KB Online | ResizeTool</a>
-<a class="seo-tool-link" href="#compress" data-active-tool="compress" data-target-kb="50">Resize Image to 50KB Online | ResizeTool</a>
-<a class="seo-tool-link" href="#compress" data-active-tool="compress" data-target-kb="100">Resize Image to 100KB Online | ResizeTool</a>
-<a class="seo-tool-link" href="#compress" data-active-tool="compress" data-target-kb="100">Compress Image to 100KB Online | ResizeTool</a>
-<a class="seo-tool-link" href="#pdf" data-active-tool="pdf">JPG to PDF Converter Online</a>
-<a class="seo-tool-link" href="#pdfcompress" data-active-tool="pdfcompress">Compress PDF Online</a>
-<a class="seo-tool-link" href="#pdftoppt" data-active-tool="pdftoppt">PDF to PowerPoint Converter Online | ResizeTool</a>
-<a class="seo-tool-link" href="#id" data-active-tool="id">ID Photo Resizer Online</a></div>
+  <nav aria-label="Popular ResizeTool tools" style="display:flex;gap:8px;flex-wrap:wrap">
+<a class="seo-tool-link" href="#resize" data-active-tool="resize" title="Resize Image Online">Resize Image Online</a>
+<a class="seo-tool-link" href="#compress" data-active-tool="compress" title="Compress Image Online">Compress Image Online</a>
+<a class="seo-tool-link" href="#compress" data-active-tool="compress" data-target-kb="20" title="Resize Image to 20KB Online">Resize Image to 20KB Online | ResizeTool</a>
+<a class="seo-tool-link" href="#compress" data-active-tool="compress" data-target-kb="50" title="Resize Image to 50KB Online">Resize Image to 50KB Online | ResizeTool</a>
+<a class="seo-tool-link" href="#compress" data-active-tool="compress" data-target-kb="100" title="Resize Image to 100KB Online">Resize Image to 100KB Online | ResizeTool</a>
+<a class="seo-tool-link" href="#compress" data-active-tool="compress" data-target-kb="100" title="Compress Image to 100KB Online">Compress Image to 100KB Online | ResizeTool</a>
+<a class="seo-tool-link" href="#pdf" data-active-tool="pdf" title="JPG to PDF Converter Online">JPG to PDF Converter Online</a>
+<a class="seo-tool-link" href="#pdfcompress" data-active-tool="pdfcompress" title="Compress PDF Online">Compress PDF Online</a>
+<a class="seo-tool-link" href="#pdftoppt" data-active-tool="pdftoppt" title="PDF to PowerPoint Converter Online">PDF to PowerPoint Converter Online | ResizeTool</a>
+<a class="seo-tool-link" href="#id" data-active-tool="id" title="ID Photo Resizer Online">ID Photo Resizer Online</a></nav>
 </section>
+
+
+
+
 <section class="seo-content" style="margin:22px 0;background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px">
   <h2>Free Online Image & PDF Tools</h2>
   <p>ResizeTool helps you resize, compress, crop and convert images directly in your browser. You can also create ID-size photos and combine images into a PDF without installing desktop software.</p>
@@ -292,8 +324,27 @@ footer{margin-top:8px}
 
 
 <style>
-.seo-tool-link{display:inline-flex;align-items:center;padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);text-decoration:none;font-weight:700;font-size:12px}
-.seo-tool-link:hover{border-color:#b9adff;box-shadow:0 5px 15px #1519230b}
+.seo-tool-link{
+  display:inline-flex;
+  align-items:center;
+  padding:5px 7px;
+  border:0;
+  border-radius:3px;
+  background:transparent;
+  color:#1a0dab;
+  text-decoration:none;
+  text-decoration-thickness:1px;
+  text-underline-offset:2px;
+  font-weight:500;
+  font-size:13px;
+  line-height:1.4;
+}
+.seo-tool-link:hover{
+  color:#174ea6;
+  background:#f1f3f4;
+  border:0;
+  box-shadow:none;
+}
 </style>
 
 <section class="features">
@@ -328,7 +379,11 @@ footer{margin-top:8px}
 <script src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"></script>
 <script>
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const uploadTop=document.querySelector('.upload-top'), functionBar=document.querySelector('main > .tools');
+if(uploadTop&&functionBar) uploadTop.insertAdjacentElement('afterend',functionBar);
 let files=[], activeIndex=0, img=null, cropper=null;
+let selectedPdfFile = null;
+let selectedOfficeFiles = [];
 const drop=$('#drop'), input=$('#files');
 
 drop.onclick=e=>{if(e.target!==input)input.click()};
@@ -365,6 +420,7 @@ function load(a){
   // A PDF dropped/selected in the main box is sent directly to Compress PDF.
   if(pdfs.length){
     const pdf = pdfs[0];
+    selectedPdfFile = pdf;
     $('#pdfCompressFile').files = (() => {
       const dt = new DataTransfer();
       dt.items.add(pdf);
@@ -451,7 +507,7 @@ $$('.seo-tool-link[data-active-tool]').forEach(link=>{
 });
 
 $('#clear').onclick=()=>{
-  files=[];input.value='';$('#workspace').classList.add('hidden');
+  files=[];activeIndex=0;input.value='';selectedPdfFile=null;selectedOfficeFiles=[];$('#workspace').classList.add('hidden');
   $('#gallery').innerHTML='';if(cropper)cropper.destroy();img=null;
 };
 $('#w').oninput=()=>{
@@ -656,8 +712,10 @@ $('#officeGo').onclick=async()=>{
 };
 </script>
 
-<script type="module">
-import * as pdfjsLib from "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.min.mjs";
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>
+const pdfjsLib = window.pdfjsLib;
+pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
 
 const pdfInput = document.getElementById('pdfCompressFile');
 const reduceInput = document.getElementById('pdfReduce');
@@ -665,96 +723,130 @@ const targetInput = document.getElementById('pdfTargetKB');
 const compressBtn = document.getElementById('pdfCompressGo');
 const compressStatus = document.getElementById('pdfCompressStatus');
 
-async function buildPdfFromImages(pdfBytes, scale, quality) {
-  const pdf = await pdfjsLib.getDocument({data: pdfBytes}).promise;
+// Keep the selected PDF available for repeated compression attempts.
+// The user only needs to choose it once unless they intentionally choose another file.
+pdfInput.addEventListener('change', () => {
+  selectedPdfFile = pdfInput.files && pdfInput.files[0] ? pdfInput.files[0] : null;
+  if (selectedPdfFile) {
+    compressStatus.textContent =
+      `${selectedPdfFile.name} selected • ready to compress again whenever required.`;
+  }
+});
+
+async function renderPdfToJpegPdf(pdfBytes, scale, quality) {
+  const loadingTask = pdfjsLib.getDocument({
+    data: pdfBytes,
+    useWorkerFetch: true,
+    isEvalSupported: true
+  });
+  const pdf = await loadingTask.promise;
   const {jsPDF} = window.jspdf;
   let output = null;
 
   for (let n = 1; n <= pdf.numPages; n++) {
     compressStatus.textContent = `Compressing page ${n} of ${pdf.numPages}…`;
+
     const page = await pdf.getPage(n);
-    const base = page.getViewport({scale:1});
-    const view = page.getViewport({scale:scale});
+    const base = page.getViewport({scale: 1});
+    const view = page.getViewport({scale});
 
     const canvas = document.createElement('canvas');
     canvas.width = Math.max(1, Math.ceil(view.width));
     canvas.height = Math.max(1, Math.ceil(view.height));
-    const ctx = canvas.getContext('2d', {alpha:false});
-    ctx.fillStyle = '#fff';
+
+    const ctx = canvas.getContext('2d', {alpha: false, willReadFrequently: false});
+    ctx.fillStyle = '#ffffff';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    await page.render({canvasContext:ctx, viewport:view}).promise;
+
+    await page.render({
+      canvasContext: ctx,
+      viewport: view,
+      intent: 'print'
+    }).promise;
 
     const jpg = canvas.toDataURL('image/jpeg', quality);
-    const orientation = base.width > base.height ? 'landscape' : 'portrait';
+    const orientation = base.width >= base.height ? 'landscape' : 'portrait';
 
     if (!output) {
       output = new jsPDF({
-        unit:'pt',
-        format:[base.width, base.height],
+        unit: 'pt',
+        format: [base.width, base.height],
         orientation,
-        compress:true
+        compress: true,
+        putOnlyUsedFonts: true
       });
     } else {
       output.addPage([base.width, base.height], orientation);
     }
-    output.addImage(jpg, 'JPEG', 0, 0, base.width, base.height, undefined, 'FAST');
+
+    output.addImage(
+      jpg, 'JPEG',
+      0, 0, base.width, base.height,
+      undefined, 'FAST'
+    );
   }
 
   return output.output('blob');
 }
 
-compressBtn.onclick = async () => {
-  const file = pdfInput.files[0];
-  if (!file) { alert('Choose a PDF first.'); return; }
+function getCandidates(reduce, targetKB) {
+  // Start with the requested reduction, then try progressively smaller
+  // render/quality combinations. This gives a usable result for both normal
+  // compression and target-KB compression.
+  const requestedScale = Math.max(0.35, Math.min(1, 1 - reduce / 100));
+  const requestedQuality = Math.max(0.35, Math.min(0.92, 0.88 - reduce / 220));
 
+  const list = [
+    {scale: requestedScale, quality: requestedQuality},
+    {scale: 0.80, quality: 0.72},
+    {scale: 0.70, quality: 0.64},
+    {scale: 0.60, quality: 0.56},
+    {scale: 0.50, quality: 0.48},
+    {scale: 0.42, quality: 0.40},
+    {scale: 0.35, quality: 0.34}
+  ];
+
+  // Remove duplicates.
+  const seen = new Set();
+  return list.filter(c => {
+    const key = `${c.scale}-${c.quality}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
+compressBtn.onclick = async () => {
+  const file = selectedPdfFile || (pdfInput.files && pdfInput.files[0]);
+  if (!file) { alert('Choose a PDF first.'); return; }
   const reduce = Math.max(1, Math.min(90, Number(reduceInput.value) || 50));
   const targetKB = Number(targetInput.value);
   const originalSize = file.size;
-
   compressBtn.disabled = true;
   try {
     const bytes = new Uint8Array(await file.arrayBuffer());
-
-    // If target KB is provided, try several quality/scale combinations and
-    // choose the smallest result that is closest to the requested target.
-    const candidates = [
-      {scale: Math.max(.45, 1-reduce/100), quality: Math.max(.45, .85-reduce/250)},
-      {scale: .70, quality:.65},
-      {scale: .60, quality:.58},
-      {scale: .50, quality:.52},
-      {scale: .45, quality:.45}
-    ];
-
-    let best = null;
-    let bestScore = Infinity;
-
-    for (const c of candidates) {
-      const b = await buildPdfFromImages(bytes, c.scale, c.quality);
-      const score = targetKB > 0
-        ? Math.abs(b.size - targetKB*1024)
-        : b.size;
-      if (!best || score < bestScore) {
-        best = b;
-        bestScore = score;
-      }
-      if (targetKB > 0 && b.size <= targetKB*1024) {
-        // Prefer a result at or below the requested target.
-        if (!best || best.size > targetKB*1024 || b.size > best.size) best = b;
+    const target = targetKB > 0 ? targetKB * 1024 : 0;
+    let scale = Math.max(0.35, Math.min(1, 1 - reduce / 100));
+    let quality = Math.max(0.35, Math.min(0.92, 0.90 - reduce / 200));
+    let best = await renderPdfToJpegPdf(bytes, scale, quality);
+    if (target > 0 && best.size > target) {
+      const attempts = [[.80,.72],[.65,.58],[.52,.46],[.42,.38],[.34,.30]];
+      for (const [sc,q] of attempts) {
+        const candidate = await renderPdfToJpegPdf(bytes, Math.min(scale,sc), Math.min(quality,q));
+        if (candidate.size < best.size) best = candidate;
+        if (candidate.size <= target) break;
       }
     }
-
-    const saved = Math.max(0, (1 - best.size/originalSize) * 100);
-    const before = Math.round(originalSize/1024);
-    const after = Math.round(best.size/1024);
-    const name = file.name.replace(/\.pdf$/i,'') + '-compressed.pdf';
-
-    download(best, name);
-    compressStatus.textContent =
-      `Done: ${before} KB → ${after} KB (${Math.round(saved)}% smaller).`;
+    if (!best || !best.size) throw new Error('Could not create a compressed PDF.');
+    const saved = Math.max(0, (1 - best.size / originalSize) * 100);
+    const before = Math.max(1, Math.round(originalSize / 1024));
+    const after = Math.max(1, Math.round(best.size / 1024));
+    download(best, file.name.replace(/\.pdf$/i, '') + '-compressed.pdf');
+    const warning = targetKB > 0 && best.size > target ? ` Target ${targetKB} KB was not reached.` : '';
+    compressStatus.textContent = `Done: ${before} KB → ${after} KB (${Math.round(saved)}% smaller). Original PDF remains selected.${warning}`;
   } catch (err) {
     console.error(err);
-    compressStatus.textContent =
-      'Compression failed. Try a smaller PDF or a different browser.';
+    compressStatus.textContent = `Compression failed: ${err?.message || 'Browser could not process this PDF.'}`;
   } finally {
     compressBtn.disabled = false;
   }
@@ -846,8 +938,8 @@ wordToPptGo.onclick = async () => {
 };
 </script>
 
-<script type="module">
-import * as pdfjsLibPpt from "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.min.mjs";
+<script>
+const pdfjsLibPpt = window.pdfjsLib;
 
 const pdfToPptFile = document.getElementById('pdfToPptFile');
 const pdfToPptGo = document.getElementById('pdfToPptGo');
