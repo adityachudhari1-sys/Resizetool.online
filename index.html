@@ -1,6 +1,15 @@
 <!doctype html>
 <html lang="en">
 <head>
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1FH6D5MYBE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-1FH6D5MYBE');
+</script>
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="referrer" content="no-referrer">
@@ -155,6 +164,32 @@ footer{margin-top:8px}
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="shortcut icon" href="/favicon.png">
+
+<style id="adsense-ready-style">
+.adsense-slot{
+  width:100%;
+  min-height:90px;
+  margin:16px 0;
+  padding:8px;
+  border:1px dashed #d8dbe4;
+  border-radius:11px;
+  background:#f7f8fb;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:#969eac;
+  font-size:10px;
+}
+.adsense-slot > span{pointer-events:none}
+.footer-adsense-slot{
+  width:min(100%,1050px);
+  min-height:90px;
+  margin:8px auto 5px;
+  background:#f5f7fb;
+}
+</style>
+
 </head>
 <body>
 <header><div class="wrap nav"><div class="logo brand" aria-label="ResizeTool"><svg class="brand-icon" width="42" height="42" viewBox="0 0 42 42" role="img" aria-label="ResizeTool"><defs><linearGradient id="rtLogoGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6c5ce7"/><stop offset="1" stop-color="#00a8ff"/></linearGradient></defs><rect x="1" y="1" width="40" height="40" rx="11" fill="url(#rtLogoGrad)"/><path d="M12 9h12.5c5.2 0 8.5 2.9 8.5 7.3 0 3.2-1.8 5.5-4.8 6.5l5.1 9.2h-6.1l-4.4-8.1h-5v8.1H12V9zm5.8 5v5.1h6.1c2.2 0 3.3-.9 3.3-2.5 0-1.7-1.1-2.6-3.3-2.6h-6.1z" fill="#fff"/><path d="M8 12v-4h4M34 30v4h-4M34 12v-4h-4M8 30v4h4" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round"/></svg><span><i>Resize</i>Tool</span></div><div class="mini">Simple • Fast • Easy</div></div></header>
@@ -263,7 +298,17 @@ footer{margin-top:8px}
 <button class="tool" data-tool="wordtoppt"><b>▣ Word → PPT</b><small>Convert Word to PowerPoint</small></button>
 </div>
 
-<div class="ad">ADVERTISEMENT</div>
+<div class="adsense-slot" aria-label="Advertisement">
+  <ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5389787720837787"
+     data-ad-slot="4140549774"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
 
 <section class="seo-landing-links" style="margin:22px 0;background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px">
   <h2 style="font-size:18px;margin:0 0 10px">Popular ResizeTool Tools</h2>
@@ -355,7 +400,17 @@ footer{margin-top:8px}
 <div class="feature"><b>Simple interface</b><span>No complicated settings or unnecessary steps.</span></div>
 <div class="feature"><b>Free to start</b><span>Ready for optional ads and premium features later.</span></div>
 </section>
-<div class="footer-ad-wrap"><div class="footer-ad">ADVERTISEMENT</div></div>
+<div class="adsense-slot footer-adsense-slot" aria-label="Advertisement">
+  <ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5389787720837787"
+     data-ad-slot="4140549774"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
 <footer>
 <div class="footer-inner">
   <div class="footer-legal">
@@ -382,19 +437,8 @@ footer{margin-top:8px}
 <script src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"></script>
 <script>
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
-const uploadTop=document.querySelector('.upload-top');
-const functionBar=document.querySelector('main > .tools');
-const workspacePanel=document.querySelector('#workspace')?.closest('section.panel');
-
-// Keep the working area immediately below the upload box. This lets a visitor
-// select a file and see the active tool/workspace without first scrolling past
-// the tool list. The tool list stays directly below the workspace.
-if(uploadTop && workspacePanel){
-  uploadTop.insertAdjacentElement('afterend',workspacePanel);
-  if(functionBar) workspacePanel.insertAdjacentElement('afterend',functionBar);
-} else if(uploadTop && functionBar){
-  uploadTop.insertAdjacentElement('afterend',functionBar);
-}
+const uploadTop=document.querySelector('.upload-top'), functionBar=document.querySelector('main > .tools');
+if(uploadTop&&functionBar) uploadTop.insertAdjacentElement('afterend',functionBar);
 let files=[], activeIndex=0, img=null, cropper=null;
 let selectedPdfFile = null;
 let selectedOfficeFiles = [];
