@@ -382,8 +382,19 @@ footer{margin-top:8px}
 <script src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"></script>
 <script>
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
-const uploadTop=document.querySelector('.upload-top'), functionBar=document.querySelector('main > .tools');
-if(uploadTop&&functionBar) uploadTop.insertAdjacentElement('afterend',functionBar);
+const uploadTop=document.querySelector('.upload-top');
+const functionBar=document.querySelector('main > .tools');
+const workspacePanel=document.querySelector('#workspace')?.closest('section.panel');
+
+// Keep the working area immediately below the upload box. This lets a visitor
+// select a file and see the active tool/workspace without first scrolling past
+// the tool list. The tool list stays directly below the workspace.
+if(uploadTop && workspacePanel){
+  uploadTop.insertAdjacentElement('afterend',workspacePanel);
+  if(functionBar) workspacePanel.insertAdjacentElement('afterend',functionBar);
+} else if(uploadTop && functionBar){
+  uploadTop.insertAdjacentElement('afterend',functionBar);
+}
 let files=[], activeIndex=0, img=null, cropper=null;
 let selectedPdfFile = null;
 let selectedOfficeFiles = [];
