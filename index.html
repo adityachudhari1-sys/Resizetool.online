@@ -437,8 +437,13 @@ footer{margin-top:8px}
 <script src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"></script>
 <script>
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
-const uploadTop=document.querySelector('.upload-top'), functionBar=document.querySelector('main > .tools');
-if(uploadTop&&functionBar) uploadTop.insertAdjacentElement('afterend',functionBar);
+const uploadTop=document.querySelector('.upload-top'),
+      functionBar=document.querySelector('main > .tools'),
+      workspacePanel=document.querySelector('main > .panel');
+/* Keep the working area directly below the upload box.
+   The function/tool buttons are placed after the working area,
+   so visitors can start working immediately without scrolling past the tool bar. */
+if(workspacePanel&&functionBar) workspacePanel.insertAdjacentElement('afterend',functionBar);
 let files=[], activeIndex=0, img=null, cropper=null;
 let selectedPdfFile = null;
 let selectedOfficeFiles = [];
