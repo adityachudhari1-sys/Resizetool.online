@@ -13,6 +13,6 @@
     <path d="M28 36h16M28 36l5-5m-5 5 5 5M44 36l-5-5m5 5-5 5" stroke-width="3.5"/>
   </g>
   <text x="84" y="49" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="38" font-weight="800" letter-spacing="-1.2">
-    <tspan fill="#dc2626">Resize</tspan><tspan fill="#dc2626">Tool</tspan>
+    <tspan fill="#dc2626">Resize</tspan><tspan fill="#111827">Tool</tspan>
   </text>
 </svg>
