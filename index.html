@@ -9,6 +9,7 @@
 <meta name="robots" content="index,follow">
 <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 <meta name="theme-color" content="#6c5ce7">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
 <meta property="og:url" content="https://resizetool.online/">
 <meta property="og:site_name" content="ResizeTool">
 <meta property="og:locale" content="en_IN">
@@ -59,12 +60,9 @@ footer{background:linear-gradient(135deg,#161a2d,#25204d);color:#e8eaf2;padding:
 .copyright{background:#dff5e8;color:#238653;border:1px solid #bfe7d0}
 .copyright strong{color:#238653}
 .legal-chip{border:1px solid #ffffff20;color:#fff;background:#ffffff10}
-.disclaimer-chip{background:#fff3e8;color:#b85c00;border-color:#ffd6ad}
 .privacy-chip{background:#eaf4ff;color:#2866a8;border-color:#c7e0fa}
 .terms-chip{background:#f1edff;color:#624bb0;border-color:#d8ccff}
 </style>
-
-
 
 <style>
 .upload-top{margin:0 0 16px}
@@ -111,8 +109,6 @@ footer{margin-top:8px}
 }
 </style>
 
-
-
 <style id="hide-empty-workspace-panel">
 .panel:has(> #workspace.hidden) { display:none; }
 </style>
@@ -120,13 +116,15 @@ footer{margin-top:8px}
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5389787720837787"
      crossorigin="anonymous"></script>
 
-
-
 <style id="review-content-style">
+.brand{display:flex;align-items:center;gap:9px;flex:0 0 auto;color:var(--ink);text-decoration:none}
+.brand-mark{display:block;width:36px;height:36px;flex:0 0 auto}
+.brand-wordmark{font-size:23px;font-weight:900;letter-spacing:-.8px;color:#111827;white-space:nowrap}
+.brand-wordmark span{color:#5b5ce2}
 .site-nav{display:flex;align-items:center;justify-content:flex-end;gap:6px;flex-wrap:wrap}
 .site-nav a{color:#4f46b5;text-decoration:none;font-size:13px;font-weight:700;padding:7px 9px;border-radius:8px}
 .site-nav a:hover,.site-nav a:focus{background:#f0efff;text-decoration:underline}
-#tools,#guides,#about,#privacy,#terms,#disclaimer{scroll-margin-top:100px}
+#tools,#guides,#about,#privacy,#terms{scroll-margin-top:100px}
 .content-section{margin:24px 0;background:#fff;border:1px solid var(--line);border-radius:18px;padding:clamp(18px,3vw,28px);box-shadow:0 8px 30px rgba(17,24,39,.04);font-size:16px;line-height:1.7}
 .content-section h2{font-size:clamp(22px,3vw,30px);line-height:1.2;letter-spacing:-.5px;margin:0 0 12px}
 .content-section h3{font-size:19px;line-height:1.35;margin:0 0 8px}
@@ -139,24 +137,30 @@ footer{margin-top:8px}
 .guide-card .guide-label{display:inline-block;color:#5146c9;background:#eeefff;border-radius:99px;padding:3px 9px;font-size:12px;font-weight:800;margin-bottom:9px}
 .guide-card p:last-child,.guide-card ul:last-child,.guide-card ol:last-child{margin-bottom:0}
 .guide-note{padding:12px 14px;border-left:3px solid #5b5ce2;background:#f5f4ff;border-radius:0 9px 9px 0}
-.question-list{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
-.question{padding:15px;border:1px solid var(--line);border-radius:12px;background:#fff}
-.question h3{font-size:16px}
 .policy-section{scroll-margin-top:100px}
 .policy-section h3{font-size:17px;margin:18px 0 5px}
 .section-heading{font-size:22px;margin:18px 0 10px}
-.footer-inner{gap:12px}
 @media(max-width:760px){
  .nav{align-items:flex-start;flex-direction:column}
  .site-nav{justify-content:flex-start}
- .guide-grid,.question-list{grid-template-columns:1fr}
+ .guide-grid{grid-template-columns:1fr}
  .content-section{padding:18px}
 }
 </style>
 </head>
 <body>
 <header><div class="wrap nav">
-  <div class="logo"><i>Resize</i>Tool</div>
+  <a class="brand" href="./" aria-label="ResizeTool home">
+    <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+      <defs><linearGradient id="brandGradient" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5b5ce2"/><stop offset="1" stop-color="#7c3aed"/></linearGradient></defs>
+      <rect x="0" y="0" width="64" height="64" rx="17" fill="url(#brandGradient)"/>
+      <g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 20v-7h7M43 13h7v7M50 43v7h-7M28 50h-7v-7" stroke-width="4"/>
+        <path d="M24 32h16M24 32l5-5m-5 5 5 5M40 32l-5-5m5 5-5 5" stroke-width="3.5"/>
+      </g>
+    </svg>
+    <span class="brand-wordmark"><span>Resize</span>Tool</span>
+  </a>
   <div class="mini">Browser-based image and document tools</div>
   <nav class="site-nav" aria-label="Main navigation">
     <a href="#tools">Tools</a><a href="#guides">How-to guides</a><a href="#about">About</a><a href="#privacy">Privacy</a>
@@ -171,7 +175,7 @@ footer{margin-top:8px}
 <div class="upload-top">
 <section class="panel">
 <div class="drop" id="drop"><input id="files" type="file" multiple accept="image/jpeg,image/png,image/webp,image/gif,image/bmp,application/pdf,.pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx" hidden>
-<div style="font-size:34px">↑</div><strong>Drop your files here</strong><p>or click to browse • Files stay in your browser when local processing is supported</p></div>
+<div style="font-size:34px">↑</div><strong>Drop your files here</strong><p>or click to browse • Maximum file size: 100 MB each</p></div>
 </section>
 </div>
 
@@ -214,7 +218,7 @@ footer{margin-top:8px}
 <div id="pdf" class="hidden"><h3>Images → PDF</h3><div class="row"><select id="page"><option>A4</option><option>Letter</option></select><select id="orientation"><option value="portrait">Portrait</option><option value="landscape">Landscape</option></select><button id="pdfGo">Create PDF</button></div></div>
 
 <div id="office" class="hidden"><h3>Word / PowerPoint / Excel → PDF</h3>
-<p class="hint">Modern <b>.docx</b>, <b>.xlsx</b> and <b>.pptx</b> files are converted in your browser. No upload is required. Older .doc/.xls files need a server converter.</p>
+<p class="hint">Modern <b>.docx</b>, <b>.xlsx</b> and <b>.pptx</b> files are supported. Older .doc and .xls files need a server converter.</p>
 <input id="officeFiles" type="file" multiple accept=".doc,.docx,.ppt,.pptx,.xls,.xlsx">
 <p><button id="officeGo">Convert to PDF</button></p>
 <div id="officeStatus" class="status"></div></div>
@@ -246,10 +250,6 @@ footer{margin-top:8px}
 <div class="status" id="status"></div>
 </div>
 </section>
-
-
-
-
 
 <h2 class="section-heading" id="tools-title">Choose a tool</h2><div class="tools" id="tools" role="group" aria-labelledby="tools-title">
 <button class="tool active" data-tool="resize"><b>↔ Resize</b><small>Set exact pixels</small></button>
@@ -294,9 +294,9 @@ footer{margin-top:8px}
 
     <article class="guide-card">
       <span class="guide-label">Crop and ID photo</span>
-      <h3>Crop first and verify photo requirements</h3>
-      <p>Crop Image lets you choose a free crop or a common aspect ratio. The manual X, Y, width, and height fields use percentages of the original image. Cropping removes pixels outside the selected area; it does not change the background or confirm that a face is positioned correctly.</p>
-      <p>The ID Photo choices on this page are generic pixel presets: 413 × 531, 600 × 600, 354 × 472, and 300 × 400. They are not an official standard. Requirements for dimensions, file size, background, recency, and head position vary by organization, so check the receiving authority's current instructions.</p>
+      <h3>Prepare a photo for an application</h3>
+      <p>Crop Image lets you choose a free crop or a common aspect ratio. Its manual X, Y, width, and height fields use percentages of the original image. Crop before resizing when the required shape differs from your source photo.</p>
+      <p>The ID Photo tool changes pixel dimensions only. Before using a preset, check the receiving organization's rules for accepted format, maximum file size, background, lighting, face position, and photo age. The tool does not inspect or certify those requirements.</p>
     </article>
 
     <article class="guide-card">
@@ -307,35 +307,22 @@ footer{margin-top:8px}
     </article>
 
     <article class="guide-card">
-      <span class="guide-label">PDF limits</span>
-      <h3>Know what PDF compression changes</h3>
-      <p>The browser PDF compressor rebuilds pages as images. It can help with scanned or photo-based PDFs, but searchable text, links, forms, and some other PDF features may not be preserved. Text and vector PDFs may not get much smaller.</p>
-      <p>PDF to PowerPoint also places each page as an image on a slide. The slide appearance is preserved as a picture, but the original PDF text does not become editable PowerPoint text. Keep the source PDF if you need searchable or editable content.</p>
+      <span class="guide-label">PDF review</span>
+      <h3>Check the compressed PDF before sharing</h3>
+      <p>Open the original and the compressed copy side by side. Check page count, small labels, photographs, and fine lines at normal reading size and at a closer zoom. A smaller file is only useful if the important details remain readable.</p>
+      <p>Keep the original PDF. If the compressed copy looks too soft, use a smaller reduction or share the original when the recipient's file-size limit allows it.</p>
     </article>
 
     <article class="guide-card">
       <span class="guide-label">Document conversion</span>
-      <h3>Check converted Office files page by page</h3>
-      <p>The Office to PDF tool handles modern DOCX, XLSX, and PPTX files in the browser. Complex fonts, charts, formulas, animations, page breaks, and unusual layouts may not look exactly as they do in the original Office app. Open the downloaded PDF and inspect every page before sharing it.</p>
-      <p>Word to PowerPoint uses document headings and paragraphs to form slide content. It is intended as a starting point; review slide breaks, text overflow, and formatting in PowerPoint before presenting.</p>
+      <h3>Prepare files before converting</h3>
+      <p>For a Word document, use clear section headings and remove blank paragraphs before converting. For a spreadsheet, check the print area and page orientation in the source application first. These choices affect what appears on the PDF pages.</p>
+      <p>After conversion, inspect page breaks, tables, charts, formulas, and text that may run off the page. For Word to PowerPoint, use a heading only where you want a slide title, then review each slide for overflow before presenting.</p>
     </article>
 
-    <article class="guide-card">
-      <span class="guide-label">Local processing</span>
-      <h3>What happens to selected files</h3>
-      <p>The current page reads selected files in the browser and its conversion code does not send those file bytes to a ResizeTool upload endpoint. Processing depends on your browser's memory and the libraries the page loads, so very large or unusual files may fail. This page skips files over 100 MB.</p>
-      <p>Your browser still makes normal requests to load the site's processing libraries and Google advertising code. Read the Privacy Policy below for information about those requests and advertising technologies.</p>
-    </article>
   </div>
 
-  <h2 style="margin-top:26px">Common questions</h2>
-  <div class="question-list">
-    <div class="question"><h3>Will target size always be exact?</h3><p>No. The image compressor tries to reach the chosen JPEG size. If the smallest result is still larger than the target, it reports that the limit was not reached. Check the downloaded file before uploading it elsewhere.</p></div>
-    <div class="question"><h3>Does resizing preserve the original file type?</h3><p>The Resize Image and Crop Image downloads are JPEGs. For a PNG or WebP result, use Convert Image and select the required output format.</p></div>
-    <div class="question"><h3>Do the ID presets guarantee acceptance?</h3><p>No. They only set pixel dimensions. They do not check an authority's current rules for background, lighting, face position, photo age, or maximum file size.</p></div>
-    <div class="question"><h3>Can I use the converted file without checking it?</h3><p>Review the downloaded result. Conversion may change compression, layout, editability, or searchable text depending on the source file and the selected tool.</p></div>
-  </div>
-</section>
+  </section>
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -357,25 +344,16 @@ footer{margin-top:8px}
 }
 </script>
 
-
-
-
-
-<section class="features" aria-label="How ResizeTool works">
-  <div class="feature"><b>Files are processed in your browser</b><span>The current page code does not send selected file data to a ResizeTool upload endpoint. The site still loads processing libraries and Google advertising code.</span></div>
-  <div class="feature"><b>Outputs have clear limits</b><span>Some conversions flatten or recompress content. The guides explain what to review before you rely on a downloaded result.</span></div>
-  <div class="feature"><b>No account is needed</b><span>Choose a file, select a tool, and download the result. This page does not ask visitors to register.</span></div>
-</section>
-
 <section class="content-section" id="about" aria-labelledby="about-title">
   <h2 id="about-title">About ResizeTool</h2>
-  <p>ResizeTool is a browser-based utility created by Aditya G. Chudhari for common image and document tasks. The page brings image resizing, compression, cropping, format conversion, and document conversion tools together with guidance about the limits of their output.</p>
+  <p>ResizeTool was created by Aditya G. Chudhari. This page explains how its tools work, documents their output limits, and provides contact details for reporting a problem or suggesting a correction.</p>
   <p>If a tool fails or a guide is unclear, contact the site owner at <a id="contact" href="mailto:resizetool@yahoo.com">resizetool@yahoo.com</a>. Please describe the tool, file type, browser, and the issue. Do not email private or sensitive files.</p>
 </section>
 
 <section class="content-section policy-section" id="privacy" aria-labelledby="privacy-title">
   <h2 id="privacy-title">Privacy Policy</h2>
-  <p><strong>Last updated: September 30, 2026</strong></p>
+  <p><strong>Privacy Policy and Terms last updated: September 30, 2026</strong></p>
+
   <p>ResizeTool does not require an account in the current version. This policy may be revised when the site's practices change; the date above identifies the latest revision.</p>
   <h3>Files selected for a tool</h3>
   <p>The current page reads selected images and documents in your browser to perform its conversions. Its file-processing code does not send selected file contents to a ResizeTool upload endpoint. Selected files may remain in the page until you use Clear, close the page, or select other files. Processing can use browser memory and may fail for large or unsupported files.</p>
@@ -383,25 +361,17 @@ footer{margin-top:8px}
   <p>The page loads processing libraries from jsDelivr and cdnjs and includes Google AdSense code. When your browser requests the page or these resources, the website host and the relevant providers may receive standard technical request information, such as your IP address, browser details, time, and requested resource, under their own policies. Contact messages sent by email are handled by the email services involved.</p>
   <h3>Advertising cookies and choices</h3>
   <p>Google and other advertising vendors may use cookies or similar technologies to serve ads based on a visitor's previous visits to this site or other sites. Google's advertising cookies enable Google and its partners to show ads based on visits to this and other sites. You can manage Google's personalized advertising choices in <a href="https://adssettings.google.com/">Google Ads Settings</a>. You can also find information about opting out of some third-party vendors at <a href="https://www.aboutads.info/choices/">aboutads.info</a>. Ad display and consent options depend on the site's AdSense settings and the visitor's location.</p>
-  <h3>Contact about privacy</h3>
-  <p>For privacy questions, email <a href="mailto:resizetool@yahoo.com">resizetool@yahoo.com</a>.</p>
+  <h3>Contact about privacy</h3><p>For privacy questions, <a href="#contact">contact the site owner</a>.</p>
 </section>
 
 <section class="content-section policy-section" id="terms" aria-labelledby="terms-title">
   <h2 id="terms-title">Terms of Use</h2>
-  <p><strong>Last updated: September 30, 2026</strong></p>
+
   <p>Use ResizeTool only for lawful purposes and only with files you have the right to process. You are responsible for checking the downloaded result before submitting, publishing, or relying on it.</p>
   <h3>Service and output</h3>
   <p>Tools run in a web browser and depend on the browser, the source file, and the libraries loaded by the page. Features may change or be unavailable. Conversions can reduce image quality, flatten PDF pages, or change document layout or editability.</p>
-  <h3>Official requirements</h3>
-  <p>Before using a result for government, employment, education, legal, or other official purposes, check the current requirements of the organization receiving it. Generic pixel presets do not certify a photo or document as compliant.</p>
-</section>
+  </section>
 
-<section class="content-section policy-section" id="disclaimer" aria-labelledby="disclaimer-title">
-  <h2 id="disclaimer-title">Disclaimer</h2>
-  <p><strong>Last updated: September 30, 2026</strong></p>
-  <p>ResizeTool provides general-purpose file tools. It does not certify that a file meets a government, employer, school, or other organization's requirements. Review dimensions, file size, quality, page layout, and editability in the downloaded result, and confirm the current requirements with the receiving organization.</p>
-</section>
 <footer>
   <div class="footer-inner">
     <div class="copyright">© 2026 ResizeTool</div>
@@ -409,12 +379,10 @@ footer{margin-top:8px}
       <a class="legal-chip" href="#about">About</a>
       <a class="legal-chip privacy-chip" href="#privacy">Privacy Policy</a>
       <a class="legal-chip terms-chip" href="#terms">Terms</a>
-      <a class="legal-chip disclaimer-chip" href="#disclaimer">Disclaimer</a>
-      <a class="legal-chip" href="mailto:resizetool@yahoo.com">Contact</a>
+      <a class="legal-chip" href="#contact">Contact</a>
     </nav>
   </div>
 </footer>
-
 
 </main>
 <script src="https://cdn.jsdelivr.net/npm/cropperjs@1.6.2/dist/cropper.min.js"></script>
@@ -537,7 +505,6 @@ function activate(n){
   ['resize','compress','crop','convert','enhance','id','pdf','office','pdfcompress','pdftoppt','wordtoppt'].forEach(x=>$('#'+x).classList.toggle('hidden',x!==n));
 }
 $$('.tool').forEach(x=>x.onclick=()=>activate(x.dataset.tool));
-
 
 $('#clear').onclick=()=>{
   files=[];activeIndex=0;input.value='';selectedPdfFile=null;selectedOfficeFiles=[];$('#workspace').classList.add('hidden');
@@ -1047,7 +1014,5 @@ pdfToPptGo.onclick = async () => {
   }
 };
 </script>
-
-
 
 </body></html>
