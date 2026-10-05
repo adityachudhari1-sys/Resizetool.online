@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://resizetool.online/</loc></url>
+  <url><loc>https://resizetool.online/image-compressor/</loc></url>
+  <url><loc>https://resizetool.online/image-resizer/</loc></url>
+  <url><loc>https://resizetool.online/photo-compressor/</loc></url>
+  <url><loc>https://resizetool.online/signature-resizer/</loc></url>
+  <url><loc>https://resizetool.online/compress-image-to-20kb/</loc></url>
+  <url><loc>https://resizetool.online/compress-image-to-50kb/</loc></url>
+  <url><loc>https://resizetool.online/compress-image-to-100kb/</loc></url>
+  <url><loc>https://resizetool.online/pdf-compressor/</loc></url>
+  <url><loc>https://resizetool.online/image-to-pdf/</loc></url>
+  <url><loc>https://resizetool.online/jpg-to-png/</loc></url>
+  <url><loc>https://resizetool.online/png-to-jpg/</loc></url>
+  <url><loc>https://resizetool.online/pdf-to-ppt/</loc></url>
 </urlset>
