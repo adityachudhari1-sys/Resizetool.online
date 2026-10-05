@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="referrer" content="no-referrer">
-<title>ResizeTool — Resize, Compress, Crop Images & Create PDFs Online</title>
-<meta name="description" content="Resize images, crop and convert photos, create PDFs, and review practical guides about file dimensions, compression, formats, and conversion limits.">
+<title>ResizeTool — Free Image Compressor, Resizer & PDF Tools</title>
+<meta name="description" content="Compress images to a target KB size, resize photos, convert JPG and PNG, and create or compress PDFs with free browser-based tools.">
 <meta name="robots" content="index,follow">
 <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 <meta name="theme-color" content="#dc2626">
@@ -164,21 +164,22 @@ footer{margin-top:8px}
     </svg>
     <span class="brand-wordmark"><span>Resize</span>Tool</span>
   </a>
-  <div class="mini">Browser-based image and document tools</div>
+  <div class="mini">Free image and PDF tools · Files processed in your browser</div>
   <nav class="site-nav" aria-label="Main navigation">
-    <a href="#tools">Tools</a><a href="#guides">How-to guides</a><a href="#about">About</a><a href="#privacy">Privacy</a>
+    <a href="#tools">Tools</a><a href="/image-compressor/">Image compressor</a><a href="/pdf-compressor/">PDF compressor</a><a href="#guides">Guides</a><a href="#about">About</a>
   </nav>
 </div></header>
 <main class="wrap">
 <section class="hero">
-  <h1>Resize images and prepare documents in your browser</h1>
-  <p>Adjust image dimensions, crop or convert photos, and create or compress documents. The guides below explain what each tool does and what to check before using its output.</p>
+  <h1>Free Image Compressor, Resizer & PDF Tools</h1>
+  <p>Compress photos to a target KB size, resize images, convert JPG and PNG, and prepare PDFs online. Your selected files are processed in your browser.</p>
 </section>
 
 <div class="upload-top">
 <section class="panel">
 <div class="drop" id="drop"><input id="files" type="file" multiple accept="image/jpeg,image/png,image/webp,image/gif,image/bmp,application/pdf,.pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx" hidden>
 <div style="font-size:34px">↑</div><strong>Drop your files here</strong><p>or click to browse • Maximum file size: 100 MB each</p></div>
+<p class="hint" style="text-align:center;margin:8px 4px 2px">🔒 Files are processed in your browser; selected file contents are not sent to a ResizeTool upload endpoint.</p>
 </section>
 </div>
 
@@ -267,6 +268,12 @@ footer{margin-top:8px}
 <button class="tool" data-tool="pdftoppt"><b>▣ PDF → PPT</b><small>Convert PDF to PowerPoint</small></button>
 <button class="tool" data-tool="wordtoppt"><b>▣ Word → PPT</b><small>Convert Word to PowerPoint</small></button>
 </div>
+
+<nav class="content-section" aria-label="Popular online tools">
+  <h2>Open a dedicated tool</h2>
+  <p class="content-lead">Choose a focused guide and open the matching tool. Always check the receiving form's current file-size, dimensions, and format rules.</p>
+  <p><a href="/image-compressor/">Image compressor</a> · <a href="/image-resizer/">Image resizer</a> · <a href="/photo-compressor/">Photo compressor</a> · <a href="/signature-resizer/">Signature resizer</a> · <a href="/compress-image-to-20kb/">Compress image to 20KB</a> · <a href="/compress-image-to-50kb/">Compress image to 50KB</a> · <a href="/compress-image-to-100kb/">Compress image to 100KB</a> · <a href="/pdf-compressor/">PDF compressor</a> · <a href="/image-to-pdf/">Image to PDF</a> · <a href="/jpg-to-png/">JPG to PNG</a> · <a href="/png-to-jpg/">PNG to JPG</a> · <a href="/pdf-to-ppt/">PDF to PowerPoint</a></p>
+</nav>
 
 <section class="content-section" id="guides" aria-labelledby="guides-title">
   <h2 id="guides-title">Practical guides for image and document tasks</h2>
@@ -442,7 +449,8 @@ function load(a){
     $('#info').textContent = images.length+' image(s) selected';
     renderGallery();
     selectImage(0);
-    activate('resize');
+    const requestedTool=new URLSearchParams(location.hash.slice(1)).get('tool');
+    activate(requestedTool&&document.getElementById(requestedTool)?requestedTool:'resize');
     $('#status').textContent = office.length || pdfs.length
       ? 'Image files loaded. PDF/Office files are handled by their dedicated tools.'
       : '';
@@ -528,6 +536,18 @@ function activate(n){
   $$('.tool').forEach(x=>x.classList.toggle('active',x.dataset.tool===n));
   ['resize','compress','crop','convert','enhance','id','pdf','office','pdfcompress','pdftoppt','wordtoppt'].forEach(x=>$('#'+x).classList.toggle('hidden',x!==n));
 }
+function applyToolHash(){
+  const params=new URLSearchParams(location.hash.slice(1));
+  const tool=params.get('tool');
+  if(tool&&document.getElementById(tool)){
+    activate(tool);
+    window.scrollTo(0,0);
+    if(params.has('target')) document.getElementById('targetKB').value=params.get('target');
+    if(params.has('format')) document.getElementById('format').value=params.get('format');
+  }
+}
+applyToolHash();
+window.addEventListener('hashchange',applyToolHash);
 $$('.tool').forEach(x=>x.onclick=()=>activate(x.dataset.tool));
 
 $('#clear').onclick=()=>{
