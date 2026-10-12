@@ -36,10 +36,20 @@
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cropperjs@1.6.2/dist/cropper.min.css">
 
   <!-- Google AdSense Script -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5389787720837787" crossorigin="anonymous"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RMFGS6WYX1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RMFGS6WYX1');
+  </script>
 
   <!-- Complete SEO Schema: WebApplication + HowTo + FAQPage -->
   <script type="application/ld+json">
@@ -174,7 +184,7 @@
       margin: 0;
       background: var(--bg);
       color: var(--ink);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
@@ -415,6 +425,10 @@
       margin-bottom: 30px;
     }
     .hidden { display: none !important; }
+    .palette-swatches { display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; }
+    .palette-chip { width:82px; height:72px; border:1px solid var(--line); border-radius:8px; display:flex; align-items:flex-end; padding:4px; }
+    .palette-chip span { background:rgba(255,255,255,.9); border-radius:4px; padding:1px 4px; font-size:11px; font-weight:700; }
+    .tool-preview { display:block; max-width:100%; max-height:460px; height:auto; margin-top:14px; border-radius:var(--radius-sm); }
 
     .workspace-header {
       display: flex;
@@ -862,10 +876,11 @@
 
     <nav class="site-nav" aria-label="Main Navigation">
       <a href="#tools-section">Tools</a>
-      <a href="#how-to">How-To</a>
-      <a href="#guides">Guides</a>
+      <a href="#tools-section">All Tools</a>
+      <a href="compress-images-guide.html">How-To</a>
+      <a href="guides.html">Guides</a>
       <a href="#faq">FAQ</a>
-      <a href="#about">About</a>
+      <a href="about.html">About</a>
     </nav>
   </div>
 </header>
@@ -1113,6 +1128,26 @@
         <div class="status" id="wordToPptStatus"></div>
       </div>
 
+      <div id="aspectcalc" class="hidden">
+        <h3 style="margin-top:0">Aspect Ratio Calculator</h3><p class="hint">Calculate a matching image height from the selected photo’s proportions.</p>
+        <div class="row"><label>Target width <input id="aspectTargetWidth" type="number" min="1" value="800"> px</label><span class="hint" id="aspectRatioResult" aria-live="polite"></span></div>
+      </div>
+      <div id="printsize" class="hidden">
+        <h3 style="margin-top:0">Print Size Calculator</h3><p class="hint">Estimate print dimensions from the selected image’s pixels and a chosen resolution.</p>
+        <div class="row"><label>Resolution <input id="printDpi" type="number" min="1" value="300"> DPI</label><span class="hint" id="printSizeResult" aria-live="polite"></span></div>
+      </div>
+      <div id="imageinfo" class="hidden">
+        <h3 style="margin-top:0">Image Details & Color Palette</h3><p class="hint">Inspect file dimensions, format, size, and a sample of its main colors.</p>
+        <div class="status" id="imageDetailsResult" aria-live="polite"></div><div class="palette-swatches" id="imagePalette" aria-label="Sampled image colors"></div>
+      </div>
+      <div id="watermark" class="hidden">
+        <h3 style="margin-top:0">Add a Text Watermark</h3><p class="hint">Preview a text mark and download a JPEG copy. The selected original stays unchanged.</p>
+        <div class="row"><label>Watermark text <input id="watermarkText" type="text" maxlength="80" value="My photo"></label><label>Position
+          <select id="watermarkPosition"><option value="bottom-right">Bottom right</option><option value="bottom-left">Bottom left</option><option value="top-right">Top right</option><option value="top-left">Top left</option><option value="center">Center</option></select>
+        </label></div>
+        <div class="row"><button class="btn btn-secondary" id="watermarkPreview">Update Preview</button><button class="btn" id="watermarkDownload">Download Watermarked JPG</button></div>
+        <canvas id="watermarkCanvas" class="tool-preview" aria-label="Watermarked image preview"></canvas><div class="status" id="watermarkStatus" aria-live="polite"></div>
+      </div>
       <div class="status" id="status"></div>
     </div>
   </section>
@@ -1154,6 +1189,10 @@
       <button class="tool" data-tool="wordtoppt" role="tab" aria-selected="false">
         <b>▣ Word → Slides</b><small>Generate presentations</small>
       </button>
+      <button class="tool" data-tool="aspectcalc" role="tab" aria-selected="false"><b>⤢ Aspect Ratio</b><small>Calculate matching dimensions</small></button>
+      <button class="tool" data-tool="printsize" role="tab" aria-selected="false"><b>▧ Print Size</b><small>Estimate inches from DPI</small></button>
+      <button class="tool" data-tool="imageinfo" role="tab" aria-selected="false"><b>◉ Image Details</b><small>Dimensions and color palette</small></button>
+      <button class="tool" data-tool="watermark" role="tab" aria-selected="false"><b>✎ Text Watermark</b><small>Add text and download a copy</small></button>
     </div>
   </section>
 
@@ -1199,6 +1238,7 @@
 
   <!-- Step-by-Step Practical Guides (High-Ranking SEO Content) -->
   <section class="content-section" id="guides">
+    <p class="content-lead">Explore the <a href="guides.html">full practical guides</a> for step-by-step help with file preparation.</p>
     <h2>Practical Guides for Images and Document Preparation</h2>
     <p class="content-lead">Detailed instructions to help you meet exact job portal, passport agency, and educational application guidelines.</p>
 
@@ -1274,7 +1314,7 @@
       <div class="faq-item">
         <details>
           <summary>Why is this tool completely free?</summary>
-          <p>ResizeTool is funded through unobtrusive Google AdSense advertisements. This allows us to keep all image processing, PDF conversions, and compression features 100% free with no registration or paywalls.</p>
+          <p>The core tools are available without a paid account. This website may display advertising; see our <a href="privacy-policy.html">Privacy Policy</a> for information about advertising and data use.</p>
         </details>
       </div>
     </div>
@@ -1290,7 +1330,7 @@
   <!-- Privacy Policy & Terms -->
   <section class="content-section" id="privacy">
     <h2>Privacy Policy & Terms of Service</h2>
-    <p><b>Last Updated: September 30, 2026</b></p>
+    <p><b>Last Updated: October 12, 2026</b>. See the <a href="privacy-policy.html">full Privacy Policy</a> and <a href="terms.html">Terms of Use</a>.</p>
     <p><b>Zero File Retention:</b> Selected images and documents are processed locally. ResizeTool does not operate an upload backend or database for storing your files.</p>
     <p><b>Advertising & Cookies:</b> We use Google AdSense to serve ads. Google and its third-party advertising partners may use cookies to serve ads based on your previous visits to this or other websites. You may opt out of personalized advertising by visiting <a href="https://adssettings.google.com/" target="_blank" rel="noopener">Google Ads Settings</a> or <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener">aboutads.info</a>.</p>
   </section>
@@ -1303,11 +1343,13 @@
       <div class="footer-logo"><span>Resize</span>Tool</div>
       <div class="footer-links">
         <a href="#tools-section">Tools</a>
-        <a href="#guides">Guides</a>
+      <a href="#tools-section">All Tools</a>
+        <a href="guides.html">Guides</a>
         <a href="#faq">FAQ</a>
-        <a href="#about">About</a>
-        <a href="#privacy">Privacy Policy</a>
-        <a href="mailto:resizetool@yahoo.com">Contact</a>
+        <a href="about.html">About</a>
+        <a href="privacy-policy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="contact.html">Contact</a>
       </div>
     </div>
     <div class="footer-bottom">
@@ -1452,6 +1494,8 @@ async function selectImage(i) {
       $('#hp').value = 100;
       setupCrop(r.result);
       drawEnhance();
+      updateImageUtilityResults();
+
       $('#status').textContent = `${f.name} • ${img.naturalWidth} × ${img.naturalHeight} px`;
     };
     img.onerror = () => $('#status').textContent = 'Unable to decode image format.';
@@ -1460,6 +1504,60 @@ async function selectImage(i) {
   r.readAsDataURL(f);
 }
 
+function updateImageUtilityResults() {
+  if (!img) return;
+  const file = files[activeIndex], width = img.naturalWidth, height = img.naturalHeight;
+  const gcd = (a, b) => { while (b) [a, b] = [b, a % b]; return a; };
+  const divisor = gcd(width, height);
+  const targetWidth = Math.max(1, parseInt($('#aspectTargetWidth').value, 10) || width);
+  $('#aspectRatioResult').textContent = `${width / divisor}:${height / divisor} ratio · matching height: ${Math.round(targetWidth * height / width)} px`;
+  const dpi = Math.max(1, parseFloat($('#printDpi').value) || 300), inchesW = width / dpi, inchesH = height / dpi;
+  $('#printSizeResult').textContent = `${width} × ${height} px ≈ ${inchesW.toFixed(2)} × ${inchesH.toFixed(2)} in (${(inchesW * 2.54).toFixed(1)} × ${(inchesH * 2.54).toFixed(1)} cm) at ${dpi} DPI.`;
+  $('#imageDetailsResult').textContent = `${file.name} · ${width} × ${height} px · ${(file.size / 1024).toFixed(1)} KB · ${file.type || 'unknown format'} · aspect ratio ${width / divisor}:${height / divisor}`;
+  const sample = document.createElement('canvas'), scale = Math.min(1, 120 / width, 120 / height);
+  sample.width = Math.max(1, Math.round(width * scale)); sample.height = Math.max(1, Math.round(height * scale));
+  const ctx = sample.getContext('2d', { willReadFrequently: true }); ctx.drawImage(img, 0, 0, sample.width, sample.height);
+  const pixels = ctx.getImageData(0, 0, sample.width, sample.height).data, colors = new Map();
+  for (let i = 0; i < pixels.length; i += 16) {
+    if (pixels[i + 3] < 128) continue;
+    const rgb = [pixels[i], pixels[i + 1], pixels[i + 2]].map(v => Math.min(255, Math.round(v / 32) * 32));
+    const hex = '#' + rgb.map(v => v.toString(16).padStart(2, '0')).join('').toUpperCase();
+    colors.set(hex, (colors.get(hex) || 0) + 1);
+  }
+  $('#imagePalette').replaceChildren(...[...colors].sort((a, b) => b[1] - a[1]).slice(0, 6).map(([hex]) => {
+    const chip = document.createElement('div'); chip.className = 'palette-chip'; chip.style.backgroundColor = hex;
+    const label = document.createElement('span'); label.textContent = hex; chip.appendChild(label); return chip;
+  }));
+}
+function renderWatermarkPreview() {
+  if (!img) return false;
+  const canvas = $('#watermarkCanvas'); canvas.width = img.naturalWidth; canvas.height = img.naturalHeight;
+  const ctx = canvas.getContext('2d'); ctx.drawImage(img, 0, 0);
+  const text = $('#watermarkText').value.trim();
+  if (text) {
+    const size = Math.max(16, Math.round(canvas.width * 0.045)), pad = Math.round(size * 0.65);
+    ctx.font = `600 ${size}px Inter, sans-serif`; ctx.textBaseline = 'middle';
+    const textWidth = ctx.measureText(text).width, position = $('#watermarkPosition').value;
+    let x = pad, y = canvas.height - pad - size / 2;
+    if (position.includes('right')) x = canvas.width - pad - textWidth;
+    if (position.includes('top')) y = pad + size / 2;
+    if (position === 'center') { x = (canvas.width - textWidth) / 2; y = canvas.height / 2; }
+    ctx.fillStyle = 'rgba(0,0,0,.48)'; ctx.fillRect(x - pad / 3, y - size * .65, textWidth + pad * 2 / 3, size * 1.3);
+    ctx.fillStyle = '#fff'; ctx.fillText(text, x, y);
+  }
+  $('#watermarkStatus').textContent = 'Preview updated. Download exports a JPEG copy; the selected source is unchanged.';
+  return true;
+}
+$('#aspectTargetWidth').addEventListener('input', updateImageUtilityResults);
+$('#printDpi').addEventListener('input', updateImageUtilityResults);
+$('#watermarkText').addEventListener('input', renderWatermarkPreview);
+$('#watermarkPosition').addEventListener('change', renderWatermarkPreview);
+$('#watermarkPreview').onclick = () => { if (!renderWatermarkPreview()) $('#watermarkStatus').textContent = 'Choose an image first.'; };
+$('#watermarkDownload').onclick = async () => {
+  if (!renderWatermarkPreview()) { $('#watermarkStatus').textContent = 'Choose an image first.'; return; }
+  const result = await blob($('#watermarkCanvas'), 'image/jpeg', 0.92);
+  if (result) download(result, 'watermarked-image.jpg');
+};
 function setupCrop(src) {
   if (cropper) { cropper.destroy(); cropper = null; }
   $('#cropImage').src = src;
@@ -1477,10 +1575,11 @@ function activate(n) {
     x.classList.toggle('active', isActive);
     x.setAttribute('aria-selected', isActive ? 'true' : 'false');
   });
-  ['resize', 'compress', 'crop', 'convert', 'enhance', 'id', 'pdf', 'office', 'pdfcompress', 'pdftoppt', 'wordtoppt'].forEach(x => {
+  ['resize', 'compress', 'crop', 'convert', 'enhance', 'id', 'pdf', 'office', 'pdfcompress', 'pdftoppt', 'wordtoppt', 'aspectcalc', 'printsize', 'imageinfo', 'watermark'].forEach(x => {
     const el = $('#' + x);
     if (el) el.classList.toggle('hidden', x !== n);
   });
+  if (n === 'watermark' && img) renderWatermarkPreview();
 }
 
 $$('.tool').forEach(x => x.onclick = () => activate(x.dataset.tool));
@@ -1497,6 +1596,11 @@ $('#clear').onclick = () => {
   if (cropper) { cropper.destroy(); cropper = null; }
   $('#preview').removeAttribute('src');
   $('#cropImage').removeAttribute('src');
+  
+  
+  
+  
+  
   ['status', 'cropStatus', 'pdfCompressStatus', 'officeStatus', 'pdfToPptStatus', 'wordToPptStatus'].forEach(id => {
     const el = $('#' + id); if (el) el.textContent = '';
   });
